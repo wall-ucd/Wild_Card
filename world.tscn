@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b2h4mi8ypha3p"]
+
+[ext_resource type="Script" uid="uid://brb3f1o738e5o" path="res://nodes/card_display.gd" id="1_f3sb7"]
+
+[node name="World" type="Node2D" unique_id=476265361]
+
+[node name="UI" type="Control" parent="." unique_id=645445383]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="In_Game" type="Control" parent="UI" unique_id=1314654221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Top_Text" type="Control" parent="UI/In_Game" unique_id=1389669826]
+layout_mode = 1
+anchor_right = 1.001
+offset_right = -0.15209961
+offset_bottom = 44.0
+
+[node name="Stopwatch" type="Label" parent="UI/In_Game/Top_Text" unique_id=134860252]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_right = 0.02
+offset_right = 27.29599
+offset_bottom = -66.276
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.39, 0.39, 0.39, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "Time: 00:00:00"
+
+[node name="Attempts_Counter" type="Label" parent="UI/In_Game/Top_Text" unique_id=1601794132]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.98
+anchor_right = 0.98
+offset_left = -277.94006
+offset_right = 0.059936523
+offset_bottom = 45.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.39, 0.39, 0.39, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "Attempts:1"
+horizontal_alignment = 2
+
+[node name="CardDisplay" type="Control" parent="UI" unique_id=604687196]
+layout_mode = 1
+anchor_top = 0.84000003
+anchor_right = 0.36
+anchor_bottom = 1.0
+offset_top = -0.32000732
+offset_right = 0.27996826
+grow_vertical = 2
+script = ExtResource("1_f3sb7")
+numCards = 3
+metadata/_custom_type_script = "uid://brb3f1o738e5o"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1159605854]
+position = Vector2(576, 324)
