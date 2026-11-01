@@ -1,12 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2h4mi8ypha3p"]
+[gd_scene format=4 uid="uid://b2h4mi8ypha3p"]
 
 [ext_resource type="Script" uid="uid://brb3f1o738e5o" path="res://nodes/card_display.gd" id="1_f3sb7"]
-
 [ext_resource type="TileSet" path="res://assets/level/ex1_terrain.tres" id="2_terrain"]
 
 [node name="World" type="Node2D" unique_id=476265361]
 
-[node name="Level1Platforms" type="TileMapLayer" parent="."]
+[node name="Level1Platforms" type="TileMapLayer" parent="." unique_id=915279227]
 texture_filter = 1
 position = Vector2(0, -64)
 scale = Vector2(1.75, 1.75)
@@ -24,6 +23,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Top_Text" type="Control" parent="UI/In_Game" unique_id=1389669826]
 layout_mode = 1
