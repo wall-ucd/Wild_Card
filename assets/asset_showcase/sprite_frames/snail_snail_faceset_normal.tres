@@ -1,0 +1,131 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b1ko7sxwnv2ci"]
+
+[ext_resource type="Texture2D" uid="uid://chi205cge30lg" path="res://assets/asset_showcase/sprites/snail/Snail_Faceset_Normal.png" id="1_tex"]
+
+[sub_resource type="AtlasTexture" id="atlas_0"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="atlas_1"]
+atlas = ExtResource("1_tex")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="atlas_2"]
+atlas = ExtResource("1_tex")
+region = Rect2(288, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="atlas_3"]
+atlas = ExtResource("1_tex")
+region = Rect2(432, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="atlas_4"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="atlas_5"]
+atlas = ExtResource("1_tex")
+region = Rect2(144, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="atlas_6"]
+atlas = ExtResource("1_tex")
+region = Rect2(288, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="atlas_7"]
+atlas = ExtResource("1_tex")
+region = Rect2(432, 144, 144, 144)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_7")
+}],
+"loop": 1,
+"name": &"all_expressions",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_0")
+}],
+"loop": 1,
+"name": &"face_1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_1")
+}],
+"loop": 1,
+"name": &"face_2",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_2")
+}],
+"loop": 1,
+"name": &"face_3",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_3")
+}],
+"loop": 1,
+"name": &"face_4",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_4")
+}],
+"loop": 1,
+"name": &"face_5",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_5")
+}],
+"loop": 1,
+"name": &"face_6",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_6")
+}],
+"loop": 1,
+"name": &"face_7",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_7")
+}],
+"loop": 1,
+"name": &"face_8",
+"speed": 1.0
+}]

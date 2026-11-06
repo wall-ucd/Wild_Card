@@ -1,0 +1,145 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://5rfbsb4ndq8i"]
+
+[ext_resource type="Texture2D" uid="uid://cc7a51nnsm4nn" path="res://assets/asset_showcase/sprites/hedgehog/hedgehog.png" id="1_tex"]
+
+[sub_resource type="AtlasTexture" id="atlas_0"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_1"]
+atlas = ExtResource("1_tex")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_2"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_3"]
+atlas = ExtResource("1_tex")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_4"]
+atlas = ExtResource("1_tex")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_5"]
+atlas = ExtResource("1_tex")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_6"]
+atlas = ExtResource("1_tex")
+region = Rect2(96, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_7"]
+atlas = ExtResource("1_tex")
+region = Rect2(120, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_8"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_9"]
+atlas = ExtResource("1_tex")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_10"]
+atlas = ExtResource("1_tex")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_11"]
+atlas = ExtResource("1_tex")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_12"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_13"]
+atlas = ExtResource("1_tex")
+region = Rect2(24, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_14"]
+atlas = ExtResource("1_tex")
+region = Rect2(48, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_15"]
+atlas = ExtResource("1_tex")
+region = Rect2(72, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="atlas_16"]
+atlas = ExtResource("1_tex")
+region = Rect2(96, 72, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_1")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_7")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_9")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_10")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_11")
+}],
+"loop": 1,
+"name": &"sleep",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_12")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_13")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_14")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_15")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_16")
+}],
+"loop": 1,
+"name": &"sleep_transition",
+"speed": 5.0
+}]

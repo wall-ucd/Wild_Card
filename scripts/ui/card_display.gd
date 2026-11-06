@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 	
 func _draw() -> void:
 	const X_OFFSET := 20
-	const CARD_DIST := 80
-	const CARD_WIDTH := 60
-	const CARD_HEIGHT := 80
+	const CARD_DIST := 160
+	const CARD_WIDTH := 120
+	const CARD_HEIGHT := 160
 	for i in numCards:
 		var xPos := X_OFFSET + CARD_DIST * i
 		var yPos := 0
