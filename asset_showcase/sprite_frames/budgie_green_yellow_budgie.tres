@@ -1,0 +1,125 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://qvfwbmit1pv4"]
+
+[ext_resource type="Texture2D" uid="uid://b1sg5vcws4whx" path="res://asset_showcase/sprites/budgies/Green-Yellow Budgie.png" id="1_tex"]
+
+[sub_resource type="AtlasTexture" id="atlas_12"]
+atlas = ExtResource("1_tex")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_11"]
+atlas = ExtResource("1_tex")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_2"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_3"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_4"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_5"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_6"]
+atlas = ExtResource("1_tex")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_7"]
+atlas = ExtResource("1_tex")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_0"]
+atlas = ExtResource("1_tex")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_1"]
+atlas = ExtResource("1_tex")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_8"]
+atlas = ExtResource("1_tex")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_9"]
+atlas = ExtResource("1_tex")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="atlas_10"]
+atlas = ExtResource("1_tex")
+region = Rect2(48, 32, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_12")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_11")
+}],
+"loop": 1,
+"name": &"eat",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_5")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_7")
+}],
+"loop": 1,
+"name": &"front",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_1")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("atlas_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_9")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_10")
+}, {
+"duration": 1.0,
+"texture": SubResource("atlas_11")
+}],
+"loop": 1,
+"name": &"peck",
+"speed": 5.0
+}]

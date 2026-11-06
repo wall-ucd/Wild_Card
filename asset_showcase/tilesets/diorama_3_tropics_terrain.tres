@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" format=3 uid="uid://0wxm88u6kxs4"]
+
+[ext_resource type="Texture2D" uid="uid://cvr4gci48vbm1" path="res://asset_showcase/sprites/seasonal/3 - Tropics/Terrain (16 x 16).png" id="1_tex"]
+
+[sub_resource type="TileSetAtlasSource" id="Atlas"]
+texture = ExtResource("1_tex")
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+
+[resource]
+sources/0 = SubResource("Atlas")

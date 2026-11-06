@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" format=3 uid="uid://df5u8rvdf2ehq"]
+
+[ext_resource type="Texture2D" uid="uid://dncmmguvyu00k" path="res://asset_showcase/sprites/swamp/1 Tiles/Tileset.png" id="1_tex"]
+
+[sub_resource type="TileSetAtlasSource" id="Atlas"]
+texture = ExtResource("1_tex")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("Atlas")
