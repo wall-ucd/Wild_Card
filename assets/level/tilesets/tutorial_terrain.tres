@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" format=3 uid="uid://cvrxrcw0v6oqd"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cvrxrcw0v6oqd"]
 
 [ext_resource type="Texture2D" uid="uid://caemdqqgvkrjf" path="res://assets/asset_showcase/sprites/seasonal/1 - Grassland/Terrain (16 x 16).png" id="1_yradw"]
 
