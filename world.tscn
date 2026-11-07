@@ -89,4 +89,4 @@ position = Vector2(96, 478)
 script = ExtResource("4_036b0")
 
 [node name="FROG" parent="CardsToPickup" unique_id=1441178161 instance=ExtResource("4_aqk2v")]
-position = Vector2(534, 513)
+position = Vector2(420.00006, 312)
