@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name card_pickup_manager
 
 signal card_pickup(card_type)
