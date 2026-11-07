@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://brb3f1o738e5o" path="res://scripts/ui/card_display.gd" id="1_f3sb7"]
 [ext_resource type="TileSet" uid="uid://clf6gbj1bndt2" path="res://assets/level/ex1_terrain.tres" id="2_terrain"]
 [ext_resource type="PackedScene" uid="uid://chile538motti" path="res://scenes/player.tscn" id="3_tlwt5"]
+[ext_resource type="Script" uid="uid://ffkclo8xqbx8" path="res://scripts/card_pickup_manager.gd" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="4_aqk2v"]
 
 [node name="World" type="Node2D" unique_id=476265361]
@@ -66,7 +67,6 @@ text = "Attempts:1"
 horizontal_alignment = 2
 
 [node name="CardDisplay" type="Control" parent="UI" unique_id=604687196]
-unique_name_in_owner = true
 layout_mode = 1
 anchor_top = 0.84000003
 anchor_right = 0.36
@@ -88,5 +88,8 @@ zoom = Vector2(0.5, 0.5)
 unique_name_in_owner = true
 position = Vector2(190, 334)
 
-[node name="Wolf_Card_Pickup" parent="." unique_id=1441178161 instance=ExtResource("4_aqk2v")]
-position = Vector2(528.00006, 265)
+[node name="CardsToPickup" type="Node" parent="." unique_id=1169641462]
+script = ExtResource("4_036b0")
+
+[node name="FROG" parent="CardsToPickup" unique_id=1441178161 instance=ExtResource("4_aqk2v")]
+position = Vector2(534, 513)
