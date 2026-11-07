@@ -197,7 +197,7 @@ _data = {
 &"pickup": SubResource("Animation_1ikuy")
 }
 
-[node name="Card_Pickup" type="Area2D" unique_id=1441178161]
+[node name="card_pickup" type="Area2D" unique_id=1441178161]
 scale = Vector2(5, 5)
 script = ExtResource("1_c7sq6")
 
