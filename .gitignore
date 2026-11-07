@@ -1,3 +1,33 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+*.translation
+
+# Local agent files and personal scratch work
+/.codex/
+/.local/
+
+# Markdown stays local; do not add new Markdown files to this PR.
+*.md
+
+# Generated exports, captures, and test output (source assets stay tracked)
+/build/
+/builds/
+/exports/
+/artifacts/
+/screenshots/
+/test-results/
+
+# Temporary files and logs
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Keep Godot .uid/.import files, scenes, resources, source assets, and tests.

@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="TileSet" path="res://assets/level/tilesets/tutorial_terrain.tres" id="2_tiles"]
+[ext_resource type="SpriteFrames" path="res://assets/asset_showcase/sprite_frames/swamp_coin.tres" id="8_coin"]
+[ext_resource type="Texture2D" path="res://assets/asset_showcase/sprites/seasonal/1 - Grassland/Background parts/_Complete_static_BG_(288 x 208).png" id="9_bg"]
+[ext_resource type="PackedScene" path="res://scenes/animals/frog.tscn" id="12_frog"]
+[ext_resource type="PackedScene" path="res://scenes/animals/bunny.tscn" id="13_bunny"]
+
+[sub_resource type="CircleShape2D" id="CoinShape"]
+radius = 18.0
+
+[node name="TutorialLevel" type="Node2D"]
+texture_filter = 1
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="BackgroundImage" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_bg")
+expand_mode = 1
+
+[node name="Level1Platforms" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAABABAAAAADAAEAAAABABEAAAADAAIAAAABABIAAAADAAYAAAACABAAAAAEAAEAAAACABEAAAAEAAIAAAACABIAAAAEAAYAAAADABAAAAAEAAEAAAADABEAAAAEAAIAAAADABIAAAAEAAYAAAAEABAAAAAEAAEAAAAEABEAAAAEAAIAAAAEABIAAAAEAAYAAAAFABAAAAAEAAEAAAAFABEAAAAEAAIAAAAFABIAAAAEAAYAAAAGABAAAAAEAAEAAAAGABEAAAAEAAIAAAAGABIAAAAEAAYAAAAHABAAAAAEAAEAAAAHABEAAAAEAAIAAAAHABIAAAAEAAYAAAAIABAAAAAEAAEAAAAIABEAAAAEAAIAAAAIABIAAAAEAAYAAAAJABAAAAAEAAEAAAAJABEAAAAEAAIAAAAJABIAAAAEAAYAAAAMAAsAAAADAAEAAAAMAAwAAAADAAIAAAAMAA0AAAADAAYAAAANAAsAAAAEAAEAAAANAAwAAAAEAAIAAAANAA0AAAAEAAYAAAAOAAsAAAAEAAEAAAAOAAwAAAAEAAIAAAAOAA0AAAAEAAYAAAAPAAsAAAAEAAEAAAAPAAwAAAAEAAIAAAAPAA0AAAAEAAYAAAAQAAsAAAAEAAEAAAAQAAwAAAAEAAIAAAAQAA0AAAAEAAYAAAARAAsAAAAEAAEAAAARAAwAAAAEAAIAAAARAA0AAAAEAAYAAAASAAsAAAAEAAEAAAASAAwAAAAEAAIAAAASAA0AAAAEAAYAAAATAAsAAAAFAAEAAAATAAwAAAAFAAIAAAATAA0AAAAFAAYAAAAaAAkAAAADAAEAAAAaAAoAAAADAAIAAAAaAAsAAAADAAYAAAAbAAkAAAAEAAEAAAAbAAoAAAAEAAIAAAAbAAsAAAAEAAYAAAAcAAkAAAAEAAEAAAAcAAoAAAAEAAIAAAAcAAsAAAAEAAYAAAAdAAkAAAAEAAEAAAAdAAoAAAAEAAIAAAAdAAsAAAAEAAYAAAAeAAkAAAAEAAEAAAAeAAoAAAAEAAIAAAAeAAsAAAAEAAYAAAAfAAkAAAAEAAEAAAAfAAoAAAAEAAIAAAAfAAsAAAAEAAYAAAAgAAkAAAAEAAEAAAAgAAoAAAAEAAIAAAAgAAsAAAAEAAYAAAAhAAkAAAAEAAEAAAAhAAoAAAAEAAIAAAAhAAsAAAAEAAYAAAAiAAkAAAAFAAEAAAAiAAoAAAAFAAIAAAAiAAsAAAAFAAYAAAAKABAAAAAEAAEAAAALABAAAAAEAAEAAAAMABAAAAAFAAEAAAAKABEAAAAEAAQAAAAKABIAAAAEAAYAAAALABEAAAAEAAIAAAALABIAAAAEAAYAAAAMABEAAAAFAAIAAAAMABIAAAAFAAYAAAA=")
+tile_set = ExtResource("2_tiles")
+
+[node name="Animals" type="Node2D" parent="."]
+
+[node name="Coin" type="Area2D" parent="."]
+position = Vector2(1032, 260)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+shape = SubResource("CoinShape")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Coin"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("8_coin")
+animation = &"coin"
+autoplay = "coin"
+
+[node name="Frog" parent="Animals" instance=ExtResource("12_frog")]
+position = Vector2(240, 512)
+
+[node name="Bunny" parent="Animals" instance=ExtResource("13_bunny")]
+position = Vector2(520, 352)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(96, 512)
