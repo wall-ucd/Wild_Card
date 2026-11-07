@@ -83,3 +83,12 @@ zoom = Vector2(0.5, 0.5)
 [node name="Player" parent="." unique_id=661114375 instance=ExtResource("3_tlwt5")]
 unique_name_in_owner = true
 position = Vector2(96, 478)
+<<<<<<< Updated upstream
+=======
+
+[node name="CardsToPickup" type="Node" parent="." unique_id=1169641462]
+script = ExtResource("4_036b0")
+
+[node name="FROG" parent="CardsToPickup" unique_id=1441178161 instance=ExtResource("4_aqk2v")]
+position = Vector2(458.00003, 310)
+>>>>>>> Stashed changes
