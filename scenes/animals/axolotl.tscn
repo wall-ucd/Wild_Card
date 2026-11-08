@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://co5kppeom0cc4"]
+[gd_scene format=3 uid="uid://0whd6gf2e8x5"]
 
-[ext_resource type="SpriteFrames" uid="uid://b1754cxw5wk55" path="res://assets/asset_showcase/sprite_frames/frog_green.tres" id="1_raqt8"]
-[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_js3d0"]
+[ext_resource type="SpriteFrames" uid="uid://b1754cxw5wk55" path="res://assets/asset_showcase/sprite_frames/frog_green.tres" id="1_2vdng"]
+[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_eo8he"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
 
-[node name="Cheetah" type="Area2D" unique_id=938545672]
+[node name="Axolotl" type="Area2D" unique_id=938545672]
 texture_filter = 1
 collision_layer = 0
 collision_mask = 2
@@ -20,9 +20,9 @@ shape = SubResource("TouchShape")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1583010512]
 position = Vector2(0, -32)
 scale = Vector2(2, 2)
-sprite_frames = ExtResource("1_raqt8")
+sprite_frames = ExtResource("1_2vdng")
 animation = &"idle_dir2"
 autoplay = "idle_dir2"
 
-[node name="CHEETAH" parent="." unique_id=1441178161 instance=ExtResource("2_js3d0")]
+[node name="AXOLOTL" parent="." unique_id=1441178161 instance=ExtResource("2_eo8he")]
 position = Vector2(0, -13.999999)

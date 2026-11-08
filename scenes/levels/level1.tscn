@@ -1,10 +1,15 @@
 [gd_scene format=4 uid="uid://d27qqesk7cbn8"]
 
 [ext_resource type="TileSet" uid="uid://cvrxrcw0v6oqd" path="res://assets/level/tilesets/tutorial_terrain.tres" id="2_tiles"]
+[ext_resource type="PackedScene" uid="uid://0whd6gf2e8x5" path="res://scenes/animals/axolotl.tscn" id="5_5ntmo"]
+[ext_resource type="PackedScene" uid="uid://0tk2m7jahybk" path="res://scenes/animals/cat.tscn" id="6_nkeig"]
+[ext_resource type="PackedScene" uid="uid://c4hftaxcnddfp" path="res://scenes/animals/hedgehog.tscn" id="7_nfihu"]
 [ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/asset_showcase/sprite_frames/swamp_coin.tres" id="8_coin"]
+[ext_resource type="PackedScene" uid="uid://g0rkqhraxle0" path="res://scenes/animals/mouse.tscn" id="8_lgguw"]
 [ext_resource type="Texture2D" uid="uid://bbkw88ud2f06a" path="res://assets/asset_showcase/sprites/seasonal/1 - Grassland/Background parts/_Complete_static_BG_(288 x 208).png" id="9_bg"]
-[ext_resource type="PackedScene" path="res://scenes/animals/frog.tscn" id="12_frog"]
-[ext_resource type="PackedScene" path="res://scenes/animals/bunny.tscn" id="13_bunny"]
+[ext_resource type="PackedScene" uid="uid://v81g8o5ue0ti" path="res://scenes/animals/snail.tscn" id="9_jprdt"]
+[ext_resource type="PackedScene" uid="uid://t2io1e43j224" path="res://scenes/animals/frog.tscn" id="12_frog"]
+[ext_resource type="PackedScene" uid="uid://bwv42jxeuvn23" path="res://scenes/animals/bunny.tscn" id="13_bunny"]
 
 [sub_resource type="CircleShape2D" id="CoinShape"]
 radius = 18.0
@@ -40,10 +45,25 @@ tile_set = ExtResource("2_tiles")
 position = Vector2(0, 1104)
 
 [node name="Frog" parent="Animals" unique_id=340289765 instance=ExtResource("12_frog")]
-position = Vector2(240, 512)
+position = Vector2(215, 511)
 
 [node name="Bunny" parent="Animals" unique_id=497391092 instance=ExtResource("13_bunny")]
 position = Vector2(520, 352)
+
+[node name="Axolotl" parent="Animals" unique_id=938545672 instance=ExtResource("5_5ntmo")]
+position = Vector2(860, 270)
+
+[node name="Cat" parent="Animals" unique_id=1551378051 instance=ExtResource("6_nkeig")]
+position = Vector2(319, 495)
+
+[node name="Hedgehog" parent="Animals" unique_id=1974621894 instance=ExtResource("7_nfihu")]
+position = Vector2(414, 345)
+
+[node name="Mouse" parent="Animals" unique_id=1626366451 instance=ExtResource("8_lgguw")]
+position = Vector2(605, 341)
+
+[node name="Snail" parent="Animals" unique_id=639336272 instance=ExtResource("9_jprdt")]
+position = Vector2(99, 501)
 
 [node name="Coin" type="Area2D" parent="." unique_id=1588024645]
 position = Vector2(1032, 1364)
