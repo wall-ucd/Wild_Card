@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dx2368s4fwrp1" path="res://scripts/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bwtvdqr85ilj" path="res://assets/player/Owlet_Monster.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://dja637i8npa75" path="res://scripts/player/sprite.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://ffkclo8xqbx8" path="res://scripts/level/card_pickup_manager.gd" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(30, 66)
@@ -21,3 +22,9 @@ script = ExtResource("3_qhqgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1778749065]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="CardsToPickupManager" type="Node" parent="." unique_id=420651446]
+script = ExtResource("4_dqkch")
+metadata/cardPickupQueue = []
+
+[connection signal="child_entered_tree" from="CardsToPickupManager" to="CardsToPickupManager" method="_on_child_entered_tree"]
