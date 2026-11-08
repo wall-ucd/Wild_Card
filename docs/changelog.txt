@@ -1,0 +1,19 @@
+Format
+------------------------------------------------
+
+Version X.X - Name of creator
+------------
+changes
+
+------------------------------------------------
+
+***Previous Versions go here if you want to go back and add them****
+
+Version 1.0 - Michael
+--------------
+- reorganized assets folder
+- added docs and tests folder (res://docs & res://tests)
+- added animation tester in res://tests/animation_tester
+- Removed asset showcase and the relevant animations and scenes (base tilemaps and sprites still remain)
+- added animations for player (jump, walk, idle) and frog (jump, walk, idle)
+- rebuilt how player and frog scenes handle animations (made changes to relevant scenes and scripts to handle new AnimationTree reference)

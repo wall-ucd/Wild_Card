@@ -1,8 +1,128 @@
 [gd_scene format=3 uid="uid://chile538motti"]
 
 [ext_resource type="Script" uid="uid://dx2368s4fwrp1" path="res://scripts/player/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://bwtvdqr85ilj" path="res://assets/player/Owlet_Monster.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dln3perin5xvt" path="res://assets/characters/owlet_monster/sprite_sheets/owlet_monster_sheet.png" id="2_sheet"]
 [ext_resource type="Script" uid="uid://dja637i8npa75" path="res://scripts/player/sprite.gd" id="3_qhqgy"]
+
+[sub_resource type="Animation" id="player_anim_reset"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="player_anim_idle"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="player_anim_walk"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="player_anim_jump"]
+resource_name = "jump"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30, 31]
+}
+
+[sub_resource type="AnimationLibrary" id="player_library"]
+_data = {
+&"RESET": SubResource("player_anim_reset"),
+&"idle": SubResource("player_anim_idle"),
+&"walk": SubResource("player_anim_walk"),
+&"jump": SubResource("player_anim_jump")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="player_node_idle"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="player_node_walk"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="player_node_jump"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="player_tr_start_idle"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="player_tr_idle_walk"]
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="player_tr_walk_idle"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="player_tr_idle_jump"]
+advance_mode = 2
+advance_condition = &"jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="player_tr_walk_jump"]
+advance_mode = 2
+advance_condition = &"jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="player_tr_jump_idle"]
+advance_mode = 2
+advance_condition = &"on_floor"
+
+[sub_resource type="AnimationNodeStateMachine" id="player_state_machine"]
+states/Start/position = Vector2(120, 100)
+states/End/position = Vector2(700, 100)
+states/idle/node = SubResource("player_node_idle")
+states/idle/position = Vector2(300, 100)
+states/walk/node = SubResource("player_node_walk")
+states/walk/position = Vector2(500, 100)
+states/jump/node = SubResource("player_node_jump")
+states/jump/position = Vector2(400, -20)
+transitions = ["Start", "idle", SubResource("player_tr_start_idle"), "idle", "walk", SubResource("player_tr_idle_walk"), "walk", "idle", SubResource("player_tr_walk_idle"), "idle", "jump", SubResource("player_tr_idle_jump"), "walk", "jump", SubResource("player_tr_walk_jump"), "jump", "idle", SubResource("player_tr_jump_idle")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(30, 66)
@@ -11,13 +131,26 @@ size = Vector2(30, 66)
 script = ExtResource("1_g2els")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1947513256]
+libraries/ = SubResource("player_library")
+autoplay = &"idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=758744477]
+texture_filter = 1
 position = Vector2(3, 2.0000076)
 scale = Vector2(2, 2)
-texture = ExtResource("2_qhqgy")
+texture = ExtResource("2_sheet")
+hframes = 8
+vframes = 12
 script = ExtResource("3_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1778749065]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1288412651]
+tree_root = SubResource("player_state_machine")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/idle = false
+parameters/conditions/jumping = false
+parameters/conditions/moving = false
+parameters/conditions/on_floor = false

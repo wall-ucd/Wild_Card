@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="SpriteFrames" path="res://assets/asset_showcase/sprite_frames/bunny_bunny_1_16x16_animation.tres" id="2_frames"]
+[ext_resource type="SpriteFrames" path="res://assets/animals/bunny/sprite_frames/bunny_1_16x16_animation.tres" id="2_frames"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
