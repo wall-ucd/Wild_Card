@@ -3,10 +3,11 @@ class_name global_variables
 
 enum animal_type {
 	FROG,
-	CAT,
+	CHEETAH,
+	BIRD,
 	HEDGEHOG,
-	BUNNY,
-	SNAIL,
-	MOUSE,
-	AXOLOTL
+	KANGAROO,
+	GECKO,
+	ANT,
+	FISH
 }

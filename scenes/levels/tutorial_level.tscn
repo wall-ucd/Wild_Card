@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://ov71gkp404q4"]
+[gd_scene format=3]
 
 [ext_resource type="TileSet" path="res://assets/environments/tutorial/tutorial_tileset.tres" id="2_tiles"]
 [ext_resource type="SpriteFrames" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="8_coin"]
@@ -9,13 +9,13 @@
 [sub_resource type="CircleShape2D" id="CoinShape"]
 radius = 18.0
 
-[node name="TutorialLevel" type="Node2D" unique_id=488910939]
+[node name="TutorialLevel" type="Node2D"]
 texture_filter = 1
 
-[node name="Background" type="CanvasLayer" parent="." unique_id=2021440026]
+[node name="Background" type="CanvasLayer" parent="."]
 layer = -10
 
-[node name="BackgroundImage" type="TextureRect" parent="Background" unique_id=1455958734]
+[node name="BackgroundImage" type="TextureRect" parent="Background"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,32 +25,32 @@ mouse_filter = 2
 texture = ExtResource("9_bg")
 expand_mode = 1
 
-[node name="Level1Platforms" type="TileMapLayer" parent="." unique_id=691371590]
+[node name="Level1Platforms" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAABABAAAAADAAEAAAABABEAAAADAAIAAAABABIAAAADAAYAAAACABAAAAAEAAEAAAACABEAAAAEAAIAAAACABIAAAAEAAYAAAADABAAAAAEAAEAAAADABEAAAAEAAIAAAADABIAAAAEAAYAAAAEABAAAAAEAAEAAAAEABEAAAAEAAIAAAAEABIAAAAEAAYAAAAFABAAAAAEAAEAAAAFABEAAAAEAAIAAAAFABIAAAAEAAYAAAAGABAAAAAEAAEAAAAGABEAAAAEAAIAAAAGABIAAAAEAAYAAAAHABAAAAAEAAEAAAAHABEAAAAEAAIAAAAHABIAAAAEAAYAAAAIABAAAAAEAAEAAAAIABEAAAAEAAIAAAAIABIAAAAEAAYAAAAJABAAAAAEAAEAAAAJABEAAAAEAAIAAAAJABIAAAAEAAYAAAAMAAsAAAADAAEAAAAMAAwAAAADAAIAAAAMAA0AAAADAAYAAAANAAsAAAAEAAEAAAANAAwAAAAEAAIAAAANAA0AAAAEAAYAAAAOAAsAAAAEAAEAAAAOAAwAAAAEAAIAAAAOAA0AAAAEAAYAAAAPAAsAAAAEAAEAAAAPAAwAAAAEAAIAAAAPAA0AAAAEAAYAAAAQAAsAAAAEAAEAAAAQAAwAAAAEAAIAAAAQAA0AAAAEAAYAAAARAAsAAAAEAAEAAAARAAwAAAAEAAIAAAARAA0AAAAEAAYAAAASAAsAAAAEAAEAAAASAAwAAAAEAAIAAAASAA0AAAAEAAYAAAATAAsAAAAFAAEAAAATAAwAAAAFAAIAAAATAA0AAAAFAAYAAAAaAAkAAAADAAEAAAAaAAoAAAADAAIAAAAaAAsAAAADAAYAAAAbAAkAAAAEAAEAAAAbAAoAAAAEAAIAAAAbAAsAAAAEAAYAAAAcAAkAAAAEAAEAAAAcAAoAAAAEAAIAAAAcAAsAAAAEAAYAAAAdAAkAAAAEAAEAAAAdAAoAAAAEAAIAAAAdAAsAAAAEAAYAAAAeAAkAAAAEAAEAAAAeAAoAAAAEAAIAAAAeAAsAAAAEAAYAAAAfAAkAAAAEAAEAAAAfAAoAAAAEAAIAAAAfAAsAAAAEAAYAAAAgAAkAAAAEAAEAAAAgAAoAAAAEAAIAAAAgAAsAAAAEAAYAAAAhAAkAAAAEAAEAAAAhAAoAAAAEAAIAAAAhAAsAAAAEAAYAAAAiAAkAAAAFAAEAAAAiAAoAAAAFAAIAAAAiAAsAAAAFAAYAAAAKABAAAAAEAAEAAAALABAAAAAEAAEAAAAMABAAAAAFAAEAAAAKABEAAAAEAAQAAAAKABIAAAAEAAYAAAALABEAAAAEAAIAAAALABIAAAAEAAYAAAAMABEAAAAFAAIAAAAMABIAAAAFAAYAAAA=")
 tile_set = ExtResource("2_tiles")
 
-[node name="Animals" type="Node2D" parent="." unique_id=710037834]
+[node name="Animals" type="Node2D" parent="."]
 
-[node name="Frog" parent="Animals" unique_id=452710599 instance=ExtResource("12_frog")]
-position = Vector2(240, 512)
-
-[node name="Bunny" parent="Animals" unique_id=64352804 instance=ExtResource("13_bunny")]
-position = Vector2(520, 352)
-
-[node name="Coin" type="Area2D" parent="." unique_id=186003544]
+[node name="Coin" type="Area2D" parent="."]
 position = Vector2(1032, 260)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=68325296]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
 shape = SubResource("CoinShape")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Coin" unique_id=1911326757]
+[node name="Sprite" type="AnimatedSprite2D" parent="Coin"]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("8_coin")
 animation = &"coin"
 autoplay = "coin"
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=689695226]
+[node name="Frog" parent="Animals" instance=ExtResource("12_frog")]
+position = Vector2(240, 512)
+
+[node name="Bunny" parent="Animals" instance=ExtResource("13_bunny")]
+position = Vector2(520, 352)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(96, 512)

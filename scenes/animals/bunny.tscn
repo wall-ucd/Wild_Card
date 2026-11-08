@@ -1,27 +1,24 @@
-[gd_scene format=3 uid="uid://bwv42jxeuvn23"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="SpriteFrames" path="res://assets/animals/bunny/sprite_frames/bunny_1_16x16_animation.tres" id="2_frames"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
 
-[node name="Bunny" type="Area2D" unique_id=92136357]
+[node name="Bunny" type="Area2D"]
 texture_filter = 1
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584452228]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("TouchShape")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=431867473]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_frames")
 animation = &"row12"
 autoplay = "row12"
-
-[node name="BUNNY" parent="." unique_id=1441178161 instance=ExtResource("2_edsaj")]
-position = Vector2(0, -15.999999)

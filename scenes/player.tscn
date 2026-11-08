@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dx2368s4fwrp1" path="res://scripts/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dln3perin5xvt" path="res://assets/characters/owlet_monster/sprite_sheets/owlet_monster_sheet.png" id="2_sheet"]
 [ext_resource type="Script" uid="uid://dja637i8npa75" path="res://scripts/player/sprite.gd" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://ffkclo8xqbx8" path="res://scripts/level/card_pickup_manager.gd" id="4_dqkch"]
 
 [sub_resource type="Animation" id="player_anim_reset"]
 length = 0.001
@@ -155,9 +154,3 @@ parameters/conditions/idle = false
 parameters/conditions/jumping = false
 parameters/conditions/moving = false
 parameters/conditions/on_floor = false
-
-[node name="CardsToPickupManager" type="Node" parent="." unique_id=420651446]
-script = ExtResource("4_dqkch")
-metadata/cardPickupQueue = []
-
-[connection signal="child_entered_tree" from="CardsToPickupManager" to="CardsToPickupManager" method="_on_child_entered_tree"]
