@@ -9,5 +9,6 @@ enum animal_type {
 	KANGAROO,
 	GECKO,
 	ANT,
-	FISH
+	FISH,
+	BUNNY
 }

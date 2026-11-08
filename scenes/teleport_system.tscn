@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bwgdlm0csw41i"]
+
+[ext_resource type="Script" uid="uid://ciek5k5ncsnt8" path="res://scripts/level/teleport_system.gd" id="1_aoim6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7n1j"]
+size = Vector2(6, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyont"]
+size = Vector2(4.0000014, 2.0531409)
+
+[node name="Teleport_System" type="Node2D" unique_id=328545244]
+script = ExtResource("1_aoim6")
+
+[node name="Teleport_Entrance" type="Area2D" parent="." unique_id=1858886946]
+position = Vector2(0, -126)
+scale = Vector2(2.016, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport_Entrance" unique_id=661365395]
+position = Vector2(0, 4.7683716e-07)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_h7n1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Teleport_Entrance" unique_id=993208966]
+
+[node name="Teleport_Exit" type="Area2D" parent="." unique_id=605305316]
+position = Vector2(188.00002, -124)
+scale = Vector2(10, 24.84)
+
+[node name="Sprite2D" type="Sprite2D" parent="Teleport_Exit" unique_id=950813393]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport_Exit" unique_id=246589890]
+position = Vector2(-5.722046e-06, 0.02012825)
+scale = Vector2(0.99999976, 1)
+shape = SubResource("RectangleShape2D_jyont")
+
+[node name="NewCameraLocation" type="Marker2D" parent="." unique_id=869655097]
+position = Vector2(91, -120)
+
+[connection signal="body_entered" from="Teleport_Entrance" to="." method="_on_teleport_entrance_body_entered"]

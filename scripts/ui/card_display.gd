@@ -4,6 +4,12 @@ extends Control
 
 @export var numCards : int
 
+func _on_card_pickup(animal_type: Variant) -> void:
+	if animal_type == global_variables.animal_type.FROG:
+		print("Picked up frog")
+	elif animal_type == global_variables.animal_type.BUNNY:
+		print("Picked up bunny")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
