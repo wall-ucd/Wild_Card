@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Texture2D" uid="uid://dwevv2perxbmk" path="res://assets/animals/frog/sprite_sheets/frog_green_spritesheet.png" id="1_sheet"]
+[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_t246m"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
@@ -155,3 +156,6 @@ parameters/conditions/idle = false
 parameters/conditions/jumping = false
 parameters/conditions/moving = false
 parameters/conditions/on_floor = false
+
+[node name="FROG" parent="." unique_id=1441178161 instance=ExtResource("2_t246m")]
+position = Vector2(0, -13.999999)
