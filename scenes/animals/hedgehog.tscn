@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4hftaxcnddfp"]
 
-[ext_resource type="SpriteFrames" uid="uid://b1754cxw5wk55" path="res://assets/asset_showcase/sprite_frames/frog_green.tres" id="1_tnqp0"]
+[ext_resource type="SpriteFrames" path="res://assets/asset_showcase/sprite_frames/frog_green.tres" id="1_tnqp0"]
 [ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_atghj"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]

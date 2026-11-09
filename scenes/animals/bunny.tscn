@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cegu3atmbiooh"]
 
 [ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_edsaj"]
 [ext_resource type="SpriteFrames" uid="uid://cq6pn7s0ikg5v" path="res://assets/animals/bunny/sprite_frames/bunny_1_16x16_animation.tres" id="2_frames"]
@@ -25,4 +25,5 @@ animation = &"row12"
 autoplay = "row12"
 
 [node name="BUNNY" parent="." unique_id=1441178161 instance=ExtResource("2_edsaj")]
+visible = false
 position = Vector2(0, -15.999999)
