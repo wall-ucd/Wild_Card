@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bctte1x0mr77j"]
 
 [ext_resource type="Texture2D" uid="uid://dwevv2perxbmk" path="res://assets/animals/frog/sprite_sheets/frog_green_spritesheet.png" id="1_sheet"]
 [ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_t246m"]
@@ -40,6 +40,23 @@ tracks/0/keys = {
 "values": [32, 33, 34]
 }
 
+[sub_resource type="Animation" id="frog_anim_jump"]
+resource_name = "jump"
+length = 0.5
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [39, 40, 41, 42]
+}
+
 [sub_resource type="Animation" id="frog_anim_walk"]
 resource_name = "walk"
 length = 0.625
@@ -58,39 +75,22 @@ tracks/0/keys = {
 "values": [43, 44, 45, 46, 47]
 }
 
-[sub_resource type="Animation" id="frog_anim_jump"]
-resource_name = "jump"
-length = 0.5
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [39, 40, 41, 42]
-}
-
 [sub_resource type="AnimationLibrary" id="frog_library"]
 _data = {
 &"RESET": SubResource("frog_anim_reset"),
 &"idle": SubResource("frog_anim_idle"),
-&"walk": SubResource("frog_anim_walk"),
-&"jump": SubResource("frog_anim_jump")
+&"jump": SubResource("frog_anim_jump"),
+&"walk": SubResource("frog_anim_walk")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="frog_node_idle"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="frog_node_walk"]
-animation = &"walk"
-
 [sub_resource type="AnimationNodeAnimation" id="frog_node_jump"]
 animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="frog_node_walk"]
+animation = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="frog_tr_start_idle"]
 advance_mode = 2
@@ -116,14 +116,14 @@ advance_mode = 2
 advance_condition = &"on_floor"
 
 [sub_resource type="AnimationNodeStateMachine" id="frog_state_machine"]
-states/Start/position = Vector2(120, 100)
 states/End/position = Vector2(700, 100)
+states/Start/position = Vector2(120, 100)
 states/idle/node = SubResource("frog_node_idle")
 states/idle/position = Vector2(300, 100)
-states/walk/node = SubResource("frog_node_walk")
-states/walk/position = Vector2(500, 100)
 states/jump/node = SubResource("frog_node_jump")
 states/jump/position = Vector2(400, -20)
+states/walk/node = SubResource("frog_node_walk")
+states/walk/position = Vector2(500, 100)
 transitions = ["Start", "idle", SubResource("frog_tr_start_idle"), "idle", "walk", SubResource("frog_tr_idle_walk"), "walk", "idle", SubResource("frog_tr_walk_idle"), "idle", "jump", SubResource("frog_tr_idle_jump"), "walk", "jump", SubResource("frog_tr_walk_jump"), "jump", "idle", SubResource("frog_tr_jump_idle")]
 
 [node name="Frog" type="Area2D" unique_id=1406623710]
@@ -158,4 +158,5 @@ parameters/conditions/moving = false
 parameters/conditions/on_floor = false
 
 [node name="FROG" parent="." unique_id=1441178161 instance=ExtResource("2_t246m")]
+visible = false
 position = Vector2(0, -13.999999)
