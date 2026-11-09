@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://b2h4mi8ypha3p"]
 
 [ext_resource type="Script" uid="uid://brb3f1o738e5o" path="res://scripts/ui/card_display.gd" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://d27qqesk7cbn8" path="res://scenes/levels/level1.tscn" id="2_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://chile538motti" path="res://scenes/player.tscn" id="3_tlwt5"]
-[ext_resource type="Script" uid="uid://ffkclo8xqbx8" path="res://scripts/card_pickup_manager.gd" id="4_036b0"]
-[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="4_aqk2v"]
-[ext_resource type="PackedScene" path="res://scenes/levels/tutorial_level.tscn" id="4_tutorial"]
+[ext_resource type="PackedScene" uid="uid://ov71gkp404q4" path="res://scenes/levels/tutorial_level.tscn" id="4_tutorial"]
+[ext_resource type="AudioStream" uid="uid://c64t3hxwlth05" path="res://audio/music/tmp_background.mp3" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://bwgdlm0csw41i" path="res://scenes/teleport_system.tscn" id="7_pkg7o"]
 
 [node name="World" type="Node2D" unique_id=978490405]
 
@@ -12,15 +13,22 @@
 
 [node name="TutorialLevel" parent="LevelContainer" unique_id=538005219 instance=ExtResource("4_tutorial")]
 
-[node name="UI" type="Control" parent="." unique_id=645445383]
+[node name="Level1" parent="LevelContainer" unique_id=956769092 instance=ExtResource("2_gbfbk")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1159605854]
+unique_name_in_owner = true
+position = Vector2(576, 324)
+zoom = Vector2(0.5, 0.5)
+
+[node name="UI" type="Control" parent="Camera2D" unique_id=645445383]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -576.0
-offset_top = -322.0
-offset_right = 1723.0
-offset_bottom = 973.0
+offset_left = -1152.0
+offset_top = -646.0
+offset_right = 1147.0
+offset_bottom = 649.0
 
-[node name="In_Game" type="Control" parent="UI" unique_id=1314654221]
+[node name="In_Game" type="Control" parent="Camera2D/UI" unique_id=1314654221]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,13 +36,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Top_Text" type="Control" parent="UI/In_Game" unique_id=1389669826]
+[node name="Top_Text" type="Control" parent="Camera2D/UI/In_Game" unique_id=1389669826]
 layout_mode = 1
 anchor_right = 1.001
 offset_right = -0.15209961
 offset_bottom = 44.0
 
-[node name="Stopwatch" type="Label" parent="UI/In_Game/Top_Text" unique_id=134860252]
+[node name="Stopwatch" type="Label" parent="Camera2D/UI/In_Game/Top_Text" unique_id=134860252]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
@@ -47,7 +55,7 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 32
 text = "Time: 00:00:00"
 
-[node name="Attempts_Counter" type="Label" parent="UI/In_Game/Top_Text" unique_id=1601794132]
+[node name="Attempts_Counter" type="Label" parent="Camera2D/UI/In_Game/Top_Text" unique_id=1601794132]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.98
@@ -63,7 +71,7 @@ theme_override_font_sizes/font_size = 32
 text = "Attempts:1"
 horizontal_alignment = 2
 
-[node name="CardDisplay" type="Control" parent="UI" unique_id=604687196]
+[node name="CardDisplay" type="Control" parent="Camera2D/UI" unique_id=604687196]
 layout_mode = 1
 anchor_top = 0.84000003
 anchor_right = 0.36
@@ -75,18 +83,26 @@ offset_bottom = -67.47998
 grow_vertical = 2
 script = ExtResource("1_f3sb7")
 numCards = 3
-metadata/_custom_type_script = "uid://brb3f1o738e5o"
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1159605854]
-position = Vector2(576, 324)
-zoom = Vector2(0.5, 0.5)
 
 [node name="Player" parent="." unique_id=661114375 instance=ExtResource("3_tlwt5")]
 unique_name_in_owner = true
 position = Vector2(96, 478)
 
-[node name="CardsToPickup" type="Node" parent="." unique_id=1169641462]
-script = ExtResource("4_036b0")
+[node name="Teleport_System_To_Level_1" parent="." unique_id=328545244 instance=ExtResource("7_pkg7o")]
+position = Vector2(1065, 284)
 
-[node name="FROG" parent="CardsToPickup" unique_id=1441178161 instance=ExtResource("4_aqk2v")]
-position = Vector2(534, 513)
+[node name="Teleport_Exit" parent="Teleport_System_To_Level_1" index="1" unique_id=605305316]
+position = Vector2(-971.00006, 1288)
+
+[node name="NewCameraLocation" parent="Teleport_System_To_Level_1" index="2" unique_id=869655097]
+position = Vector2(-476, 1270)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1269629695]
+stream = ExtResource("6_dwbse")
+autoplay = true
+bus = &"Background Music"
+
+[connection signal="card_pickup" from="Player/CardsToPickupManager" to="Camera2D/UI/CardDisplay" method="_on_card_pickup"]
+
+[editable path="Player"]
+[editable path="Teleport_System_To_Level_1"]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://v81g8o5ue0ti"]
+
+[ext_resource type="SpriteFrames" uid="uid://b1754cxw5wk55" path="res://assets/asset_showcase/sprite_frames/frog_green.tres" id="1_jm7yf"]
+[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_hykoi"]
+
+[sub_resource type="CircleShape2D" id="TouchShape"]
+radius = 22.0
+
+[node name="Snail" type="Area2D" unique_id=938545672]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441874250]
+position = Vector2(0, -16)
+shape = SubResource("TouchShape")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1583010512]
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("1_jm7yf")
+animation = &"idle_dir2"
+autoplay = "idle_dir2"
+
+[node name="SNAIL" parent="." unique_id=1441178161 instance=ExtResource("2_hykoi")]
+position = Vector2(0, -13.999999)
