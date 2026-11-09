@@ -1,0 +1,123 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://tests/animation_tester/scripts/animation_tester.gd" id="1_tester"]
+
+[sub_resource type="StyleBoxFlat" id="PanelStyle"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.08, 0.09, 0.11, 0.86)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="LabelSettings" id="StepLabel"]
+font_color = Color(0.55, 0.8, 1, 1)
+
+[node name="AnimationTester" type="Node2D" unique_id=1185200001]
+texture_filter = 1
+script = ExtResource("1_tester")
+
+[node name="World" type="Node2D" parent="." unique_id=1185200002]
+
+[node name="SceneryHolder" type="Node2D" parent="World" unique_id=1185200003]
+
+[node name="PreviewHolder" type="Node2D" parent="World" unique_id=1185200004]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1185200005]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1185200006]
+
+[node name="TopBar" type="PanelContainer" parent="UI" unique_id=1185200007]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("PanelStyle")
+
+[node name="Rows" type="VBoxContainer" parent="UI/TopBar" unique_id=1185200008]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SelectRow" type="HBoxContainer" parent="UI/TopBar/Rows" unique_id=1185200009]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AssetLabel" type="Label" parent="UI/TopBar/Rows/SelectRow" unique_id=1185200010]
+layout_mode = 2
+text = "1  Asset"
+label_settings = SubResource("StepLabel")
+
+[node name="AssetSelect" type="OptionButton" parent="UI/TopBar/Rows/SelectRow" unique_id=1185200011]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+focus_mode = 0
+fit_to_longest_item = false
+
+[node name="AnimLabel" type="Label" parent="UI/TopBar/Rows/SelectRow" unique_id=1185200012]
+layout_mode = 2
+text = "   2  Animation"
+label_settings = SubResource("StepLabel")
+
+[node name="AnimSelect" type="OptionButton" parent="UI/TopBar/Rows/SelectRow" unique_id=1185200013]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+focus_mode = 0
+fit_to_longest_item = false
+
+[node name="SceneryLabel" type="Label" parent="UI/TopBar/Rows/SelectRow" unique_id=1185200014]
+layout_mode = 2
+text = "   3  Scenery"
+label_settings = SubResource("StepLabel")
+
+[node name="ScenerySelect" type="OptionButton" parent="UI/TopBar/Rows/SelectRow" unique_id=1185200015]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+focus_mode = 0
+fit_to_longest_item = false
+
+[node name="ControlRow" type="HBoxContainer" parent="UI/TopBar/Rows" unique_id=1185200016]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PlayPause" type="Button" parent="UI/TopBar/Rows/ControlRow" unique_id=1185200017]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Pause"
+
+[node name="PrevFrame" type="Button" parent="UI/TopBar/Rows/ControlRow" unique_id=1185200018]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "< Frame"
+
+[node name="NextFrame" type="Button" parent="UI/TopBar/Rows/ControlRow" unique_id=1185200019]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Frame >"
+
+[node name="ZoomLabel" type="Label" parent="UI/TopBar/Rows/ControlRow" unique_id=1185200020]
+layout_mode = 2
+text = "   Zoom"
+label_settings = SubResource("StepLabel")
+
+[node name="ZoomOut" type="Button" parent="UI/TopBar/Rows/ControlRow" unique_id=1185200021]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "Zoom out (or mouse wheel)"
+text = "-"
+
+[node name="ZoomIn" type="Button" parent="UI/TopBar/Rows/ControlRow" unique_id=1185200022]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "Zoom in (or mouse wheel)"
+text = "+"

@@ -1,0 +1,105 @@
+[gd_scene format=3]
+
+[ext_resource type="TileSet" uid="uid://0wxm88u6kxs4" path="res://assets/environments/seasonal/tropics/tropics_tileset.tres" id="1_res"]
+[ext_resource type="Texture2D" uid="uid://dhalua3lnesie" path="res://assets/environments/seasonal/tropics/background/5_sky_color.png" id="2_res"]
+[ext_resource type="Texture2D" uid="uid://bph7hxscixjc7" path="res://assets/environments/seasonal/tropics/background/4_background_clouds.png" id="3_res"]
+[ext_resource type="Texture2D" uid="uid://b3khb3e2osyio" path="res://assets/environments/seasonal/tropics/background/3_floating_clouds.png" id="4_res"]
+[ext_resource type="Texture2D" uid="uid://d3732655qqvti" path="res://assets/environments/seasonal/tropics/background/2_waters_version_2.png" id="5_res"]
+[ext_resource type="Texture2D" uid="uid://bv1holq37grsu" path="res://assets/environments/seasonal/tropics/background/1_waters_version_1.png" id="6_res"]
+[ext_resource type="Texture2D" uid="uid://2txasii02s72" path="res://assets/environments/seasonal/tropics/tiles/tropics_entities_16x16.png" id="7_res"]
+
+[node name="TropicsScenery" type="Node2D" unique_id=900348437]
+texture_filter = 1
+
+[node name="Background" type="Node2D" parent="." unique_id=900356356]
+z_index = -10
+
+[node name="Layer0" type="Parallax2D" parent="Background" unique_id=900364275]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(864, 0)
+repeat_times = 6
+position = Vector2(640, -216)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Layer0" unique_id=900372194]
+scale = Vector2(3, 3)
+texture = ExtResource("2_res")
+
+[node name="Layer1" type="Parallax2D" parent="Background" unique_id=900380113]
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(864, 0)
+autoscroll = Vector2(-16, 0)
+repeat_times = 6
+position = Vector2(640, -216)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Layer1" unique_id=900388032]
+scale = Vector2(3, 3)
+texture = ExtResource("3_res")
+
+[node name="Layer2" type="Parallax2D" parent="Background" unique_id=900395951]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(864, 0)
+autoscroll = Vector2(-24, 0)
+repeat_times = 6
+position = Vector2(640, -216)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Layer2" unique_id=900403870]
+scale = Vector2(3, 3)
+texture = ExtResource("4_res")
+
+[node name="Layer3" type="Parallax2D" parent="Background" unique_id=900411789]
+scroll_scale = Vector2(0.7, 1)
+repeat_size = Vector2(864, 0)
+repeat_times = 6
+position = Vector2(640, -216)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Layer3" unique_id=900419708]
+scale = Vector2(3, 3)
+texture = ExtResource("5_res")
+
+[node name="Layer4" type="Parallax2D" parent="Background" unique_id=900427627]
+scroll_scale = Vector2(0.9, 1)
+repeat_size = Vector2(864, 0)
+repeat_times = 6
+position = Vector2(640, -216)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Layer4" unique_id=900435546]
+scale = Vector2(3, 3)
+texture = ExtResource("6_res")
+
+[node name="Props" type="Node2D" parent="." unique_id=900443465]
+
+[node name="Prop0" type="Sprite2D" parent="Props" unique_id=900451384]
+position = Vector2(168.421, -33)
+scale = Vector2(2, 2)
+texture = ExtResource("7_res")
+region_enabled = true
+region_rect = Rect2(26, 27, 29, 37)
+
+[node name="Prop1" type="Sprite2D" parent="Props" unique_id=900459303]
+position = Vector2(303.158, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("7_res")
+region_enabled = true
+region_rect = Rect2(86, 48, 36, 16)
+
+[node name="Prop2" type="Sprite2D" parent="Props" unique_id=900467222]
+position = Vector2(707.368, -18)
+scale = Vector2(2, 2)
+texture = ExtResource("7_res")
+region_enabled = true
+region_rect = Rect2(192, 90, 16, 22)
+
+[node name="Prop3" type="Sprite2D" parent="Props" unique_id=900475141]
+position = Vector2(1111.58, -18)
+scale = Vector2(2, 2)
+texture = ExtResource("7_res")
+region_enabled = true
+region_rect = Rect2(224, 90, 16, 22)
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=900483060]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAEAAAABAAAAAAAEAAEAAAACAAAAAAAEAAEAAAADAAAAAAAEAAEAAAAEAAAAAAAEAAEAAAAFAAAAAAAEAAEAAAAGAAAAAAAEAAEAAAAHAAAAAAAEAAEAAAAIAAAAAAAEAAEAAAAJAAAAAAAEAAEAAAAKAAAAAAAEAAEAAAALAAAAAAAEAAEAAAAMAAAAAAAEAAEAAAANAAAAAAAEAAEAAAAOAAAAAAAEAAEAAAAPAAAAAAAEAAEAAAAQAAAAAAAEAAEAAAARAAAAAAAEAAEAAAASAAAAAAAEAAEAAAATAAAAAAAEAAEAAAAUAAAAAAAEAAEAAAAVAAAAAAAEAAEAAAAWAAAAAAAEAAEAAAAXAAAAAAAEAAEAAAAYAAAAAAAEAAEAAAAZAAAAAAAEAAEAAAAaAAAAAAAEAAEAAAAbAAAAAAAEAAEAAAAcAAAAAAAEAAEAAAAdAAAAAAAEAAEAAAAeAAAAAAAEAAEAAAAfAAAAAAAEAAEAAAAgAAAAAAAEAAEAAAAhAAAAAAAEAAEAAAAiAAAAAAAEAAEAAAAjAAAAAAAEAAEAAAAkAAAAAAAEAAEAAAAlAAAAAAAEAAEAAAAmAAAAAAAEAAEAAAAnAAAAAAAFAAEAAAAAAAEAAAADAAIAAAABAAEAAAAEAAIAAAACAAEAAAAEAAIAAAADAAEAAAAEAAIAAAAEAAEAAAAEAAIAAAAFAAEAAAAEAAIAAAAGAAEAAAAEAAIAAAAHAAEAAAAEAAIAAAAIAAEAAAAEAAIAAAAJAAEAAAAEAAIAAAAKAAEAAAAEAAIAAAALAAEAAAAEAAIAAAAMAAEAAAAEAAIAAAANAAEAAAAEAAIAAAAOAAEAAAAEAAIAAAAPAAEAAAAEAAIAAAAQAAEAAAAEAAIAAAARAAEAAAAEAAIAAAASAAEAAAAEAAIAAAATAAEAAAAEAAIAAAAUAAEAAAAEAAIAAAAVAAEAAAAEAAIAAAAWAAEAAAAEAAIAAAAXAAEAAAAEAAIAAAAYAAEAAAAEAAIAAAAZAAEAAAAEAAIAAAAaAAEAAAAEAAIAAAAbAAEAAAAEAAIAAAAcAAEAAAAEAAIAAAAdAAEAAAAEAAIAAAAeAAEAAAAEAAIAAAAfAAEAAAAEAAIAAAAgAAEAAAAEAAIAAAAhAAEAAAAEAAIAAAAiAAEAAAAEAAIAAAAjAAEAAAAEAAIAAAAkAAEAAAAEAAIAAAAlAAEAAAAEAAIAAAAmAAEAAAAEAAIAAAAnAAEAAAAFAAIAAAAAAAIAAAADAAYAAAABAAIAAAAEAAYAAAACAAIAAAAEAAYAAAADAAIAAAAEAAYAAAAEAAIAAAAEAAYAAAAFAAIAAAAEAAYAAAAGAAIAAAAEAAYAAAAHAAIAAAAEAAYAAAAIAAIAAAAEAAYAAAAJAAIAAAAEAAYAAAAKAAIAAAAEAAYAAAALAAIAAAAEAAYAAAAMAAIAAAAEAAYAAAANAAIAAAAEAAYAAAAOAAIAAAAEAAYAAAAPAAIAAAAEAAYAAAAQAAIAAAAEAAYAAAARAAIAAAAEAAYAAAASAAIAAAAEAAYAAAATAAIAAAAEAAYAAAAUAAIAAAAEAAYAAAAVAAIAAAAEAAYAAAAWAAIAAAAEAAYAAAAXAAIAAAAEAAYAAAAYAAIAAAAEAAYAAAAZAAIAAAAEAAYAAAAaAAIAAAAEAAYAAAAbAAIAAAAEAAYAAAAcAAIAAAAEAAYAAAAdAAIAAAAEAAYAAAAeAAIAAAAEAAYAAAAfAAIAAAAEAAYAAAAgAAIAAAAEAAYAAAAhAAIAAAAEAAYAAAAiAAIAAAAEAAYAAAAjAAIAAAAEAAYAAAAkAAIAAAAEAAYAAAAlAAIAAAAEAAYAAAAmAAIAAAAEAAYAAAAnAAIAAAAFAAYAAAA=")
+tile_set = ExtResource("1_res")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=900490979]
+position = Vector2(320, 0)
