@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://ov71gkp404q4"]
 
-[ext_resource type="TileSet" uid="uid://cvrxrcw0v6oqd" path="res://assets/level/tilesets/tutorial_terrain.tres" id="2_tiles"]
-[ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/asset_showcase/sprite_frames/swamp_coin.tres" id="8_coin"]
-[ext_resource type="Texture2D" uid="uid://bbkw88ud2f06a" path="res://assets/asset_showcase/sprites/seasonal/1 - Grassland/Background parts/_Complete_static_BG_(288 x 208).png" id="9_bg"]
+[ext_resource type="TileSet" path="res://assets/environments/tutorial/tutorial_tileset.tres" id="2_tiles"]
+[ext_resource type="SpriteFrames" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="8_coin"]
+[ext_resource type="Texture2D" path="res://assets/environments/seasonal/grassland/background/complete_static_bg_288x208.png" id="9_bg"]
 [ext_resource type="PackedScene" path="res://scenes/animals/frog.tscn" id="12_frog"]
 [ext_resource type="PackedScene" path="res://scenes/animals/bunny.tscn" id="13_bunny"]
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ht2sw3bwf4wa"]
 
-[ext_resource type="Script" uid="uid://de4n068lsfese" path="res://scripts/level/card_pickup.gd" id="1_c7sq6"]
+[ext_resource type="Script" uid="uid://de4n068lsfese" path="res://scripts/card_pickup.gd" id="1_c7sq6"]
+[ext_resource type="Texture2D" uid="uid://bgxho6a3ycjms" path="res://assets/ui/card.png" id="1_i64fm"]
 [ext_resource type="AudioStream" uid="uid://qq2q8ji2f2ej" path="res://audio/level/pickup.wav" id="2_11l1o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7n1j"]
@@ -16,5 +17,8 @@ shape = SubResource("CircleShape2D_h7n1j")
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=996996576]
 stream = ExtResource("2_11l1o")
 bus = &"Sound Effects"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=314192517]
+libraries/ = SubResource("AnimationLibrary_wnlwo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

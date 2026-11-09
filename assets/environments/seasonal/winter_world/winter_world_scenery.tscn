@@ -1,0 +1,88 @@
+[gd_scene format=3]
+
+[ext_resource type="TileSet" uid="uid://bau3ckm2uashw" path="res://assets/environments/seasonal/winter_world/winter_world_tileset.tres" id="1_res"]
+[ext_resource type="Texture2D" uid="uid://t70xnf4h7rww" path="res://assets/environments/seasonal/winter_world/background/3_big_mountain_bg.png" id="2_res"]
+[ext_resource type="Texture2D" uid="uid://cinegl8cb24oq" path="res://assets/environments/seasonal/winter_world/background/2_smaller_mountains.png" id="3_res"]
+[ext_resource type="Texture2D" uid="uid://bvhoby6nia2d8" path="res://assets/environments/seasonal/winter_world/background/1_snowy_foreground_area.png" id="4_res"]
+[ext_resource type="Texture2D" uid="uid://dend3lufr450c" path="res://assets/environments/seasonal/winter_world/tiles/winter_entities_16x16.png" id="5_res"]
+
+[node name="WinterWorldScenery" type="Node2D" unique_id=900498898]
+texture_filter = 1
+
+[node name="Background" type="Node2D" parent="." unique_id=900506817]
+z_index = -10
+
+[node name="Layer0" type="Parallax2D" parent="Background" unique_id=900514736]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(864, 0)
+repeat_times = 6
+position = Vector2(640, -216)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Layer0" unique_id=900522655]
+scale = Vector2(3, 3)
+texture = ExtResource("2_res")
+
+[node name="Layer1" type="Parallax2D" parent="Background" unique_id=900530574]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(864, 0)
+repeat_times = 6
+position = Vector2(640, -216)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Layer1" unique_id=900538493]
+scale = Vector2(3, 3)
+texture = ExtResource("3_res")
+
+[node name="Layer2" type="Parallax2D" parent="Background" unique_id=900546412]
+scroll_scale = Vector2(0.9, 1)
+repeat_size = Vector2(864, 0)
+repeat_times = 6
+position = Vector2(640, -216)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Layer2" unique_id=900554331]
+scale = Vector2(3, 3)
+texture = ExtResource("4_res")
+
+[node name="Props" type="Node2D" parent="." unique_id=900562250]
+
+[node name="Prop0" type="Sprite2D" parent="Props" unique_id=900570169]
+position = Vector2(168.421, -40)
+scale = Vector2(2, 2)
+texture = ExtResource("5_res")
+region_enabled = true
+region_rect = Rect2(19, 20, 42, 44)
+
+[node name="Prop1" type="Sprite2D" parent="Props" unique_id=900578088]
+position = Vector2(572.632, -40)
+scale = Vector2(2, 2)
+texture = ExtResource("5_res")
+region_enabled = true
+region_rect = Rect2(83, 20, 42, 44)
+
+[node name="Prop2" type="Sprite2D" parent="Props" unique_id=900586007]
+position = Vector2(303.158, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("5_res")
+region_enabled = true
+region_rect = Rect2(145, 16, 47, 16)
+
+[node name="Prop3" type="Sprite2D" parent="Props" unique_id=900593926]
+position = Vector2(707.368, -12)
+scale = Vector2(2, 2)
+texture = ExtResource("5_res")
+region_enabled = true
+region_rect = Rect2(157, 48, 39, 16)
+
+[node name="Prop4" type="Sprite2D" parent="Props" unique_id=900601845]
+position = Vector2(1111.58, -8)
+scale = Vector2(2, 2)
+texture = ExtResource("5_res")
+region_enabled = true
+region_rect = Rect2(16, 84, 16, 12)
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=900609764]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAEAAAABAAAAAAAEAAEAAAACAAAAAAAEAAEAAAADAAAAAAAEAAEAAAAEAAAAAAAEAAEAAAAFAAAAAAAEAAEAAAAGAAAAAAAEAAEAAAAHAAAAAAAEAAEAAAAIAAAAAAAEAAEAAAAJAAAAAAAEAAEAAAAKAAAAAAAEAAEAAAALAAAAAAAEAAEAAAAMAAAAAAAEAAEAAAANAAAAAAAEAAEAAAAOAAAAAAAEAAEAAAAPAAAAAAAEAAEAAAAQAAAAAAAEAAEAAAARAAAAAAAEAAEAAAASAAAAAAAEAAEAAAATAAAAAAAEAAEAAAAUAAAAAAAEAAEAAAAVAAAAAAAEAAEAAAAWAAAAAAAEAAEAAAAXAAAAAAAEAAEAAAAYAAAAAAAEAAEAAAAZAAAAAAAEAAEAAAAaAAAAAAAEAAEAAAAbAAAAAAAEAAEAAAAcAAAAAAAEAAEAAAAdAAAAAAAEAAEAAAAeAAAAAAAEAAEAAAAfAAAAAAAEAAEAAAAgAAAAAAAEAAEAAAAhAAAAAAAEAAEAAAAiAAAAAAAEAAEAAAAjAAAAAAAEAAEAAAAkAAAAAAAEAAEAAAAlAAAAAAAEAAEAAAAmAAAAAAAEAAEAAAAnAAAAAAAFAAEAAAAAAAEAAAADAAIAAAABAAEAAAAEAAIAAAACAAEAAAAEAAIAAAADAAEAAAAEAAIAAAAEAAEAAAAEAAIAAAAFAAEAAAAEAAIAAAAGAAEAAAAEAAIAAAAHAAEAAAAEAAIAAAAIAAEAAAAEAAIAAAAJAAEAAAAEAAIAAAAKAAEAAAAEAAIAAAALAAEAAAAEAAIAAAAMAAEAAAAEAAIAAAANAAEAAAAEAAIAAAAOAAEAAAAEAAIAAAAPAAEAAAAEAAIAAAAQAAEAAAAEAAIAAAARAAEAAAAEAAIAAAASAAEAAAAEAAIAAAATAAEAAAAEAAIAAAAUAAEAAAAEAAIAAAAVAAEAAAAEAAIAAAAWAAEAAAAEAAIAAAAXAAEAAAAEAAIAAAAYAAEAAAAEAAIAAAAZAAEAAAAEAAIAAAAaAAEAAAAEAAIAAAAbAAEAAAAEAAIAAAAcAAEAAAAEAAIAAAAdAAEAAAAEAAIAAAAeAAEAAAAEAAIAAAAfAAEAAAAEAAIAAAAgAAEAAAAEAAIAAAAhAAEAAAAEAAIAAAAiAAEAAAAEAAIAAAAjAAEAAAAEAAIAAAAkAAEAAAAEAAIAAAAlAAEAAAAEAAIAAAAmAAEAAAAEAAIAAAAnAAEAAAAFAAIAAAAAAAIAAAADAAYAAAABAAIAAAAEAAYAAAACAAIAAAAEAAYAAAADAAIAAAAEAAYAAAAEAAIAAAAEAAYAAAAFAAIAAAAEAAYAAAAGAAIAAAAEAAYAAAAHAAIAAAAEAAYAAAAIAAIAAAAEAAYAAAAJAAIAAAAEAAYAAAAKAAIAAAAEAAYAAAALAAIAAAAEAAYAAAAMAAIAAAAEAAYAAAANAAIAAAAEAAYAAAAOAAIAAAAEAAYAAAAPAAIAAAAEAAYAAAAQAAIAAAAEAAYAAAARAAIAAAAEAAYAAAASAAIAAAAEAAYAAAATAAIAAAAEAAYAAAAUAAIAAAAEAAYAAAAVAAIAAAAEAAYAAAAWAAIAAAAEAAYAAAAXAAIAAAAEAAYAAAAYAAIAAAAEAAYAAAAZAAIAAAAEAAYAAAAaAAIAAAAEAAYAAAAbAAIAAAAEAAYAAAAcAAIAAAAEAAYAAAAdAAIAAAAEAAYAAAAeAAIAAAAEAAYAAAAfAAIAAAAEAAYAAAAgAAIAAAAEAAYAAAAhAAIAAAAEAAYAAAAiAAIAAAAEAAYAAAAjAAIAAAAEAAYAAAAkAAIAAAAEAAYAAAAlAAIAAAAEAAYAAAAmAAIAAAAEAAYAAAAnAAIAAAAFAAYAAAA=")
+tile_set = ExtResource("1_res")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=900617683]
+position = Vector2(320, 0)
