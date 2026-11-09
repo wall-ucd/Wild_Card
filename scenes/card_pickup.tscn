@@ -65,7 +65,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_wnlwo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jig8b")
+"texture": SubResource("AtlasTemplate_jig8b") # adjusted cleanly
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xmuha")
