@@ -19,6 +19,11 @@ var ability1 : Command #double jump
 var ability2 : Command #dash
 var ability3 : Command #glide
 
+var ability0 : Command #teleport
+var ability1 : Command #double jump
+var ability2 : Command #dash
+var ability3 : Command #glide
+
 
 func take_damage():
 	# This just oofs the player.
@@ -48,8 +53,50 @@ func _physics_process(delta: float):
 	if Input.is_action_just_pressed("jump"):
 		up_cmd.execute(self)
 		
+
+	if is_on_floor():
+		double_jumped = false
+
 	if Input.is_action_just_pressed("jump"):
 		up_cmd.execute(self)
+		
+	if Input.is_action_just_pressed("jump"):
+		up_cmd.execute(self)
+		
+	#Ability activations. Will be modified
+	if Input.is_action_just_pressed("ability0"):
+		ability0.execute(self)
+		
+	if Input.is_action_just_pressed("ability1"):
+		ability1.execute(self)
+	
+	if Input.is_action_just_pressed("ability2"):
+		ability2.execute(self)
+		
+	if Input.is_action_just_pressed("ability3"):
+		ability3.execute(self)
+	
+	if gliding:
+		glideCount -= 1
+		if glideCount <= 0 || is_on_floor():
+			gliding = false
+			glideCount = 200
+			gravity = defaultGravity
+	
+	if dashing:
+		dashCount -= 1
+		if dashCount <= 0:
+			dashing = false
+			dashCount = 20
+			
+	else:
+		if move_input > 0.1:
+			right_cmd.execute(self)
+		elif move_input < -0.1:
+			left_cmd.execute(self)
+		else:
+			idle.execute(self)
+	
 		
 	#Ability activations. Will be modified
 	if Input.is_action_just_pressed("ability0"):
@@ -107,6 +154,11 @@ func bind_player_input_commands():
 	ability1 = DoubleJumpCommand.new()
 	ability2 = DashCommand.new()
 	ability3 = GlideCommand.new()
+	#abilities
+	ability0 = TeleportCommand.new()
+	ability1 = DoubleJumpCommand.new()
+	ability2 = DashCommand.new()
+	ability3 = GlideCommand.new()
 
 
 func unbind_player_input_commands():
@@ -114,6 +166,11 @@ func unbind_player_input_commands():
 	left_cmd = IdleCommand.new()
 	up_cmd = IdleCommand.new()
 	idle = IdleCommand.new()
+	#abilities
+	ability0 = IdleCommand.new()
+	ability1 = IdleCommand.new()
+	ability2 = IdleCommand.new()
+	ability3 = IdleCommand.new()
 	#abilities
 	ability0 = IdleCommand.new()
 	ability1 = IdleCommand.new()
