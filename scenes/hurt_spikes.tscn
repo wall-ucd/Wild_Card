@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://daidn033gnd2c"]
+
+[ext_resource type="Script" uid="uid://bmx1mdvs8jx13" path="res://scripts/level/hurt_spikes.gd" id="1_v3my0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7n1j"]
+size = Vector2(20, 6.962024)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4n47x"]
+size = Vector2(2, 50)
+
+[node name="HurtSpikes" type="Area2D" unique_id=1300237386]
+scale = Vector2(2, 2)
+script = ExtResource("1_v3my0")
+
+[node name="Area2D" type="CollisionShape2D" parent="." unique_id=29281279]
+position = Vector2(0, -11)
+scale = Vector2(1.7199982, 3.1600003)
+shape = SubResource("RectangleShape2D_h7n1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=197273391]
+position = Vector2(-16, -12)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D10" type="Sprite2D" parent="." unique_id=1074075880]
+position = Vector2(-1.1920929e-07, -1)
+scale = Vector2(17.26952, -0.043530226)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1304634537]
+position = Vector2(-12, -12)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1675289557]
+position = Vector2(-8.000001, -12)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D11" type="Sprite2D" parent="." unique_id=2033884515]
+position = Vector2(-8.087593, -15.399143)
+rotation = -1.2482713
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D12" type="Sprite2D" parent="." unique_id=109177845]
+position = Vector2(-8.087593, -12.399142)
+rotation = -1.2482713
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D13" type="Sprite2D" parent="." unique_id=590653999]
+position = Vector2(-8.087594, -8.399142)
+rotation = -1.2482713
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D14" type="Sprite2D" parent="." unique_id=2078035450]
+position = Vector2(7.912407, -14.399143)
+rotation = 1.3665324
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D15" type="Sprite2D" parent="." unique_id=1664061937]
+position = Vector2(7.912407, -11.399142)
+rotation = 1.3665324
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D16" type="Sprite2D" parent="." unique_id=1829763208]
+position = Vector2(7.912406, -7.3991423)
+rotation = 1.3665324
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=527207426]
+position = Vector2(-4.4104824, -12.088261)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=902114602]
+position = Vector2(-0.4104824, -12.088261)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=1250644677]
+position = Vector2(3.5895166, -12.088261)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=619358784]
+position = Vector2(7.5895176, -12.088261)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=1197524217]
+position = Vector2(11.589518, -12.088261)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=1894943033]
+position = Vector2(15.589517, -12.088261)
+scale = Vector2(0.5895171, 0.39646953)
+texture = SubResource("PlaceholderTexture2D_4n47x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

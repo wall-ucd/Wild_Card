@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://g0rkqhraxle0" path="res://scenes/animals/mouse.tscn" id="8_lgguw"]
 [ext_resource type="Texture2D" uid="uid://bbkw88ud2f06a" path="res://assets/environments/seasonal/grassland/background/complete_static_bg_288x208.png" id="9_bg"]
 [ext_resource type="PackedScene" uid="uid://v81g8o5ue0ti" path="res://scenes/animals/snail.tscn" id="9_jprdt"]
+[ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="11_nkeig"]
 [ext_resource type="PackedScene" uid="uid://bctte1x0mr77j" path="res://scenes/animals/frog.tscn" id="12_frog"]
-[ext_resource type="PackedScene" path="res://scenes/animals/bunny.tscn" id="13_bunny"]
+[ext_resource type="PackedScene" uid="uid://cegu3atmbiooh" path="res://scenes/animals/bunny.tscn" id="13_bunny"]
 
 [sub_resource type="CircleShape2D" id="CoinShape"]
 radius = 18.0
@@ -81,3 +82,6 @@ autoplay = "coin"
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=401263272]
 position = Vector2(96, 1616)
+
+[node name="level_killzone" parent="." unique_id=1300237386 instance=ExtResource("11_nkeig")]
+position = Vector2(542, 1921)

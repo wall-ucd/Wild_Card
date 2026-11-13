@@ -2,12 +2,32 @@ class_name Player
 extends Character
 
 var _dead:bool = false
+var _last_teleported_position:Vector2 = Vector2(0, 0)
+var previous_frame_position:Vector2
+signal died_and_respawned
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+
+func take_damage():
+	# This just oofs the player.
+	$TakeDamageSound.pitch_scale = randf_range(0.65, 1.2)
+	$TakeDamageSound.play(0.7)
+	_dead = true
+
 func _physics_process(delta: float):
 	if _dead:
+		# Teleport back to last teleported position
+		# or where the player started.
+		self.global_position = _last_teleported_position
+		emit_signal("died_and_respawned")
+		_dead = false
 		return
+	
+	# Detect a teleport and save it.
+	if ((self.global_position - previous_frame_position).length() * delta > 3):
+		_last_teleported_position = self.global_position
+	previous_frame_position = self.global_position
 
 	var move_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
@@ -27,7 +47,9 @@ func _physics_process(delta: float):
 
 func _ready():
 	super()
+	_last_teleported_position = self.global_position
 	animation_tree.active = true
+	previous_frame_position = self.global_position
 	bind_player_input_commands()
 
 func bind_player_input_commands():
