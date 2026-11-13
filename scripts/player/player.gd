@@ -36,8 +36,9 @@ func _physics_process(delta: float):
 		return
 	
 	# Detect a teleport and save it.
-	if ((self.global_position - previous_frame_position).length() * delta > 3):
+	if ((self.global_position - previous_frame_position).length() * delta > 4):
 		_last_teleported_position = self.global_position
+		print((self.global_position - previous_frame_position).length() * delta)
 	previous_frame_position = self.global_position
 
 	var move_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
