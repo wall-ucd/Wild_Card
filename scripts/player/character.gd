@@ -23,7 +23,8 @@ var idle : Command
 var facing:Facing = Facing.RIGHT
 
 var jumping:bool = false
-var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
+var defaultGravity: int = ProjectSettings.get("physics/2d/default_gravity")
+var gravity:int = defaultGravity 
 
 var _horizontal_input : float
 
