@@ -1,10 +1,272 @@
 [gd_scene format=3 uid="uid://0whd6gf2e8x5"]
 
-[ext_resource type="SpriteFrames" path="res://assets/asset_showcase/sprite_frames/frog_green.tres" id="1_2vdng"]
+[ext_resource type="Texture2D" uid="uid://h6ti2x134a6c" path="res://assets/animals/axolotl/sprite_sheets/tiny_axolotl_spritesheet_albino.png" id="1_sheet"]
 [ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_eo8he"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
+
+[sub_resource type="Animation" id="axolotl_anim_RESET"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_idle"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_swim_n"]
+resource_name = "swim_n"
+length = 0.48
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_swim_nw"]
+resource_name = "swim_nw"
+length = 0.48
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_swim_w"]
+resource_name = "swim_w"
+length = 0.48
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_swim_sw"]
+resource_name = "swim_sw"
+length = 0.48
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_swim_s"]
+resource_name = "swim_s"
+length = 0.48
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [64, 65, 66, 67]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_swim_se"]
+resource_name = "swim_se"
+length = 0.48
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [80, 81, 82, 83]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_swim_e"]
+resource_name = "swim_e"
+length = 0.48
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [96, 97, 98, 99]
+}
+
+[sub_resource type="Animation" id="axolotl_anim_swim_ne"]
+resource_name = "swim_ne"
+length = 0.48
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [112, 113, 114, 115]
+}
+
+[sub_resource type="AnimationLibrary" id="axolotl_library"]
+_data = {
+&"RESET": SubResource("axolotl_anim_RESET"),
+&"idle": SubResource("axolotl_anim_idle"),
+&"swim_n": SubResource("axolotl_anim_swim_n"),
+&"swim_nw": SubResource("axolotl_anim_swim_nw"),
+&"swim_w": SubResource("axolotl_anim_swim_w"),
+&"swim_sw": SubResource("axolotl_anim_swim_sw"),
+&"swim_s": SubResource("axolotl_anim_swim_s"),
+&"swim_se": SubResource("axolotl_anim_swim_se"),
+&"swim_e": SubResource("axolotl_anim_swim_e"),
+&"swim_ne": SubResource("axolotl_anim_swim_ne")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_idle"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_swim_n"]
+animation = &"swim_n"
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_swim_nw"]
+animation = &"swim_nw"
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_swim_w"]
+animation = &"swim_w"
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_swim_sw"]
+animation = &"swim_sw"
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_swim_s"]
+animation = &"swim_s"
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_swim_se"]
+animation = &"swim_se"
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_swim_e"]
+animation = &"swim_e"
+
+[sub_resource type="AnimationNodeAnimation" id="axolotl_node_swim_ne"]
+animation = &"swim_ne"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="axolotl_node_swim"]
+blend_point_0/node = SubResource("axolotl_node_swim_n")
+blend_point_0/pos = Vector2(0, -1)
+blend_point_1/node = SubResource("axolotl_node_swim_nw")
+blend_point_1/pos = Vector2(-0.7071, -0.7071)
+blend_point_2/node = SubResource("axolotl_node_swim_w")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("axolotl_node_swim_sw")
+blend_point_3/pos = Vector2(-0.7071, 0.7071)
+blend_point_4/node = SubResource("axolotl_node_swim_s")
+blend_point_4/pos = Vector2(0, 1)
+blend_point_5/node = SubResource("axolotl_node_swim_se")
+blend_point_5/pos = Vector2(0.7071, 0.7071)
+blend_point_6/node = SubResource("axolotl_node_swim_e")
+blend_point_6/pos = Vector2(1, 0)
+blend_point_7/node = SubResource("axolotl_node_swim_ne")
+blend_point_7/pos = Vector2(0.7071, -0.7071)
+min_space = Vector2(-1, -1)
+max_space = Vector2(1, 1)
+x_label = "x (right +)"
+y_label = "y (down +)"
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="axolotl_tr_start_idle"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="axolotl_tr_idle_swim"]
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="axolotl_tr_swim_idle"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="axolotl_state_machine"]
+states/End/position = Vector2(800, 100)
+states/Start/position = Vector2(120, 100)
+states/idle/node = SubResource("axolotl_node_idle")
+states/idle/position = Vector2(300, 100)
+states/swim/node = SubResource("axolotl_node_swim")
+states/swim/position = Vector2(500, 100)
+transitions = ["Start", "idle", SubResource("axolotl_tr_start_idle"), "idle", "swim", SubResource("axolotl_tr_idle_swim"), "swim", "idle", SubResource("axolotl_tr_swim_idle")]
 
 [node name="Axolotl" type="Area2D" unique_id=938545672]
 texture_filter = 1
@@ -17,12 +279,25 @@ monitorable = false
 position = Vector2(0, -16)
 shape = SubResource("TouchShape")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1583010512]
-position = Vector2(0, -32)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=120663117]
+libraries/ = SubResource("axolotl_library")
+autoplay = &"idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1583010512]
+position = Vector2(0, -16)
 scale = Vector2(2, 2)
-sprite_frames = ExtResource("1_2vdng")
-animation = &"idle_dir2"
-autoplay = "idle_dir2"
+texture = ExtResource("1_sheet")
+hframes = 8
+vframes = 16
+frame = 20
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1083410646]
+tree_root = SubResource("axolotl_state_machine")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/idle = false
+parameters/conditions/moving = false
+parameters/swim/blend_position = Vector2(1, 0)
 
 [node name="AXOLOTL" parent="." unique_id=1441178161 instance=ExtResource("2_eo8he")]
+visible = false
 position = Vector2(0, -13.999999)

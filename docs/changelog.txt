@@ -9,6 +9,26 @@ changes
 
 ***Previous Versions go here if you want to go back and add them****
 
+Version 1.1 - Michael
+--------------
+- added animations (Sprite2D + AnimationPlayer + AnimationTree, same pattern as frog/player):
+	bunny (idle, walk, jump), hedgehog (idle, walk, dash), mouse (idle, walk), snail - jitsu large (idle, walk),
+	axolotl - albino (idle + swim in 8 directions via a "swim" BlendSpace2D), bat - purple (flying)
+- rebuilt bunny, hedgehog, mouse, snail and axolotl scenes (old placeholder frog_green.tres reference removed)
+- added new bat scene (res://scenes/animals/bat.tscn) with a BAT card pickup
+- added BAT to global_variables.animal_type and a bat branch in card_display.gd
+- added player death animation (owlet monster) + "death" state in player AnimationTree (conditions: dead / respawned)
+  (not triggered by gameplay yet - set the "dead" / "respawned" conditions to use it)
+- added animated liquids tileset (res://assets/environments/seasonal/misc_universal/liquids_tileset.tres):
+	water / lava / oil sources, each with an animated surface tile (0,0) and fill tile (0,1); no collision
+- snail now uses jitsu_snail_small (scale 2)
+- card pickups on every animal are hidden by default (still collectable)
+- rebuilt cat scene: idle + walk (tiny_cat_spritesheet_orange_00), fixes the "missing dependencies" error on load
+- added res://scenes/spike.tscn: single spike (16-bit spike sprite) using hurt_spikes.gd. Origin = centre of its
+  16x16 tile, square 12x12 hitbox, so it can be rotated in 90 degree steps for floors / walls / ceilings
+- added (unused for now): card sprite sheet (res://assets/ui/cards), Sprout Lands UI pack (res://assets/ui/sprout_lands),
+  FX pack (res://assets/fx/fx_pack)
+
 Version 1.0 - Michael
 --------------
 - reorganized assets folder

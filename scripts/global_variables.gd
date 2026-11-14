@@ -8,5 +8,6 @@ enum animal_type {
 	BUNNY,
 	SNAIL,
 	MOUSE,
-	AXOLOTL
+	AXOLOTL,
+	BAT
 }

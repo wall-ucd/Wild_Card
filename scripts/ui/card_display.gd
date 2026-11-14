@@ -19,6 +19,8 @@ func _on_card_pickup(animal_type: Variant) -> void:
 		print("Picked up mouse")
 	elif animal_type == global_variables.animal_type.AXOLOTL:
 		print("Picked up axolotl")
+	elif animal_type == global_variables.animal_type.BAT:
+		print("Picked up bat")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

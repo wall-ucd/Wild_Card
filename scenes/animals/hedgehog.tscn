@@ -1,10 +1,179 @@
 [gd_scene format=3 uid="uid://c4hftaxcnddfp"]
 
-[ext_resource type="SpriteFrames" path="res://assets/asset_showcase/sprite_frames/frog_green.tres" id="1_tnqp0"]
-[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_atghj"]
+[ext_resource type="Texture2D" uid="uid://cc7a51nnsm4nn" path="res://assets/animals/hedgehog/sprite_sheets/hedgehog.png" id="1_sheet"]
+[ext_resource type="Texture2D" path="res://assets/animals/hedgehog/sprite_sheets/hedgehog_dash.png" id="2_dash"]
+[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="3_atghj"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
+
+[sub_resource type="Animation" id="hedgehog_anim_RESET"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_sheet")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="hedgehog_anim_idle"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_sheet")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="hedgehog_anim_walk"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_sheet")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="hedgehog_anim_dash"]
+resource_name = "dash"
+length = 0.78
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dash")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.6, 0.66, 0.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+}
+
+[sub_resource type="AnimationLibrary" id="hedgehog_library"]
+_data = {
+&"RESET": SubResource("hedgehog_anim_RESET"),
+&"idle": SubResource("hedgehog_anim_idle"),
+&"walk": SubResource("hedgehog_anim_walk"),
+&"dash": SubResource("hedgehog_anim_dash")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="hedgehog_node_idle"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="hedgehog_node_walk"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="hedgehog_node_dash"]
+animation = &"dash"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="hedgehog_tr_start_idle"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="hedgehog_tr_idle_walk"]
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="hedgehog_tr_walk_idle"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="hedgehog_tr_idle_dash"]
+advance_mode = 2
+advance_condition = &"dashing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="hedgehog_tr_walk_dash"]
+advance_mode = 2
+advance_condition = &"dashing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="hedgehog_tr_dash_idle"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="hedgehog_state_machine"]
+states/End/position = Vector2(800, 100)
+states/Start/position = Vector2(120, 100)
+states/idle/node = SubResource("hedgehog_node_idle")
+states/idle/position = Vector2(300, 100)
+states/walk/node = SubResource("hedgehog_node_walk")
+states/walk/position = Vector2(500, 100)
+states/dash/node = SubResource("hedgehog_node_dash")
+states/dash/position = Vector2(400, -20)
+transitions = ["Start", "idle", SubResource("hedgehog_tr_start_idle"), "idle", "walk", SubResource("hedgehog_tr_idle_walk"), "walk", "idle", SubResource("hedgehog_tr_walk_idle"), "idle", "dash", SubResource("hedgehog_tr_idle_dash"), "walk", "dash", SubResource("hedgehog_tr_walk_dash"), "dash", "idle", SubResource("hedgehog_tr_dash_idle")]
 
 [node name="Hedgehog" type="Area2D" unique_id=938545672]
 texture_filter = 1
@@ -17,12 +186,25 @@ monitorable = false
 position = Vector2(0, -16)
 shape = SubResource("TouchShape")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1583010512]
-position = Vector2(0, -32)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("1_tnqp0")
-animation = &"idle_dir2"
-autoplay = "idle_dir2"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1891103376]
+libraries/ = SubResource("hedgehog_library")
+autoplay = &"idle"
 
-[node name="HEDGEHOG" parent="." unique_id=1441178161 instance=ExtResource("2_atghj")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1583010512]
+position = Vector2(0, -24)
+scale = Vector2(2, 2)
+texture = ExtResource("1_sheet")
+hframes = 6
+vframes = 4
+frame = 0
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=380512904]
+tree_root = SubResource("hedgehog_state_machine")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/idle = false
+parameters/conditions/moving = false
+parameters/conditions/dashing = false
+
+[node name="HEDGEHOG" parent="." unique_id=1441178161 instance=ExtResource("3_atghj")]
+visible = false
 position = Vector2(0, -13.999999)
