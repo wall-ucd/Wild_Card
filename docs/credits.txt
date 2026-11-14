@@ -6,6 +6,9 @@ https://free-game-assets.itch.io/free-swamp-2d-tileset-pixel-art
 2. Seasonal Tilesets
 https://grafxkid.itch.io/seasonal-tilesets
 
+3. Spikes
+https://omniclause.itch.io/spikes
+
 Sprites
 ------------
 1. Frogs || Pixel Asset Pack
@@ -28,3 +31,17 @@ https://pop-shop-packs.itch.io/budgie-parakeet-birds-pixel-asset-pack
 
 7. Snail Pack
 https://jitsukoan.itch.io/snail-pack
+
+8. Free FX - Pixel Art Effect - FX062
+https://nyknck.itch.io/fx062
+
+9. Cave Bats || Pixel Asset Pack
+https://pop-shop-packs.itch.io/cave-bat-pixel-asset-pack
+
+UI
+------------
+1. Sprout Lands - UI Pack (Basic pack) by Cup Nooble  [free basic license: non-commercial use only, no redistribution]
+https://cupnooble.itch.io/
+
+2. Card Game Layout Templated
+https://guawoo.itch.io/card-game-layout-template

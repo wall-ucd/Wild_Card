@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://bmx1mdvs8jx13" path="res://scripts/level/hurt_spikes.gd" id="1_hurt"]
+[ext_resource type="Texture2D" path="res://assets/environments/hazards/spikes/spike_16_bit_sheet.png" id="2_spikes"]
+
+[sub_resource type="RectangleShape2D" id="SpikeHitbox"]
+size = Vector2(12, 12)
+
+[node name="Spike" type="Area2D" unique_id=1715203384]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_hurt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=826531907]
+texture = ExtResource("2_spikes")
+hframes = 4
+frame = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1349972755]
+shape = SubResource("SpikeHitbox")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

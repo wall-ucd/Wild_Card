@@ -1,0 +1,91 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/animals/bat/sprite_sheets/bat_purple_flying.png" id="1_sheet"]
+[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_pickup"]
+
+[sub_resource type="CircleShape2D" id="TouchShape"]
+radius = 22.0
+
+[sub_resource type="Animation" id="bat_anim_RESET"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="bat_anim_flying"]
+resource_name = "flying"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="bat_library"]
+_data = {
+&"RESET": SubResource("bat_anim_RESET"),
+&"flying": SubResource("bat_anim_flying")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="bat_node_flying"]
+animation = &"flying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="bat_tr_start_flying"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="bat_state_machine"]
+states/End/position = Vector2(800, 100)
+states/Start/position = Vector2(120, 100)
+states/flying/node = SubResource("bat_node_flying")
+states/flying/position = Vector2(300, 100)
+transitions = ["Start", "flying", SubResource("bat_tr_start_flying")]
+
+[node name="Bat" type="Area2D" unique_id=241073580]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1206736567]
+position = Vector2(0, -16)
+shape = SubResource("TouchShape")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=384554525]
+libraries/ = SubResource("bat_library")
+autoplay = &"flying"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=304083619]
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
+texture = ExtResource("1_sheet")
+hframes = 4
+vframes = 2
+frame = 0
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=203988699]
+tree_root = SubResource("bat_state_machine")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="BAT" parent="." unique_id=940673153 instance=ExtResource("2_pickup")]
+visible = false
+position = Vector2(0, -13.999999)

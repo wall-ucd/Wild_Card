@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://7t8yf7ke5i1l"]
 
-[ext_resource type="Script" path="res://tests/animation_tester/scripts/animation_tester.gd" id="1_tester"]
+[ext_resource type="Script" uid="uid://dhce8el21fjb" path="res://tests/animation_tester/scripts/animation_tester.gd" id="1_tester"]
 
 [sub_resource type="StyleBoxFlat" id="PanelStyle"]
 content_margin_left = 10.0
@@ -110,14 +110,14 @@ label_settings = SubResource("StepLabel")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
-focus_mode = 0
 tooltip_text = "Zoom out (or mouse wheel)"
+focus_mode = 0
 text = "-"
 
 [node name="ZoomIn" type="Button" parent="UI/TopBar/Rows/ControlRow" unique_id=1185200022]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
-focus_mode = 0
 tooltip_text = "Zoom in (or mouse wheel)"
+focus_mode = 0
 text = "+"

@@ -1,10 +1,95 @@
 [gd_scene format=3 uid="uid://v81g8o5ue0ti"]
 
-[ext_resource type="SpriteFrames" path="res://assets/asset_showcase/sprite_frames/frog_green.tres" id="1_jm7yf"]
+[ext_resource type="Texture2D" uid="uid://ux4xb8vm8h2r" path="res://assets/animals/snail/sprite_sheets/jitsu_snail_small.png" id="1_sheet"]
 [ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_hykoi"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
+
+[sub_resource type="Animation" id="snail_anim_RESET"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="snail_anim_idle"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="snail_anim_walk"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="snail_library"]
+_data = {
+&"RESET": SubResource("snail_anim_RESET"),
+&"idle": SubResource("snail_anim_idle"),
+&"walk": SubResource("snail_anim_walk")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="snail_node_idle"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="snail_node_walk"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="snail_tr_start_idle"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="snail_tr_idle_walk"]
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="snail_tr_walk_idle"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="snail_state_machine"]
+states/End/position = Vector2(800, 100)
+states/Start/position = Vector2(120, 100)
+states/idle/node = SubResource("snail_node_idle")
+states/idle/position = Vector2(300, 100)
+states/walk/node = SubResource("snail_node_walk")
+states/walk/position = Vector2(500, 100)
+transitions = ["Start", "idle", SubResource("snail_tr_start_idle"), "idle", "walk", SubResource("snail_tr_idle_walk"), "walk", "idle", SubResource("snail_tr_walk_idle")]
 
 [node name="Snail" type="Area2D" unique_id=938545672]
 texture_filter = 1
@@ -17,12 +102,24 @@ monitorable = false
 position = Vector2(0, -16)
 shape = SubResource("TouchShape")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1583010512]
-position = Vector2(0, -32)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1468891951]
+libraries/ = SubResource("snail_library")
+autoplay = &"idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1583010512]
+position = Vector2(0, -48)
 scale = Vector2(2, 2)
-sprite_frames = ExtResource("1_jm7yf")
-animation = &"idle_dir2"
-autoplay = "idle_dir2"
+texture = ExtResource("1_sheet")
+hframes = 3
+vframes = 4
+frame = 7
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=2057967351]
+tree_root = SubResource("snail_state_machine")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/idle = false
+parameters/conditions/moving = false
 
 [node name="SNAIL" parent="." unique_id=1441178161 instance=ExtResource("2_hykoi")]
+visible = false
 position = Vector2(0, -13.999999)
