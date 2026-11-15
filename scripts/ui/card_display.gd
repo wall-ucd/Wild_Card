@@ -5,23 +5,23 @@ var numCards : int = 0
 var cards : Array[Card]
 var cardScene : PackedScene = preload("res://scenes/ui/card.tscn")
 
-func _on_card_pickup(animal_type : Globals.animal_type) -> void:
+func addCard(type : Globals.animal_type) -> void:
 	cards.push_back(cardScene.instantiate())
-	if animal_type == Globals.animal_type.FROG:
+	if type == Globals.animal_type.FROG:
 		print("Picked up frog")
-	elif animal_type == Globals.animal_type.CAT:
+	elif type == Globals.animal_type.CAT:
 		print("Picked up cat")
-	elif animal_type == Globals.animal_type.HEDGEHOG:
+	elif type == Globals.animal_type.HEDGEHOG:
 		print("Picked up hedgehog")
-	elif animal_type == Globals.animal_type.BUNNY:
+	elif type == Globals.animal_type.BUNNY:
 		print("Picked up bunny")
-	elif animal_type == Globals.animal_type.SNAIL:
+	elif type == Globals.animal_type.SNAIL:
 		print("Picked up snail")
-	elif animal_type == Globals.animal_type.MOUSE:
+	elif type == Globals.animal_type.MOUSE:
 		print("Picked up mouse")
-	elif animal_type == Globals.animal_type.AXOLOTL:
+	elif type == Globals.animal_type.AXOLOTL:
 		print("Picked up axolotl")
-	elif animal_type == Globals.animal_type.BAT:
+	elif type == Globals.animal_type.BAT:
 		print("Picked up bat")
 
 # Called when the node enters the scene tree for the first time.
