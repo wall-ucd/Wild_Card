@@ -1,87 +1,69 @@
-[gd_scene format=4 uid="uid://d27qqesk7cbn8"]
+[gd_scene format=4 uid="uid://3qaq347d4hia"]
 
-[ext_resource type="TileSet" uid="uid://cvrxrcw0v6oqd" path="res://assets/environments/tutorial/tutorial_tileset.tres" id="2_tiles"]
-[ext_resource type="PackedScene" uid="uid://0whd6gf2e8x5" path="res://scenes/animals/axolotl.tscn" id="5_5ntmo"]
-[ext_resource type="PackedScene" uid="uid://0tk2m7jahybk" path="res://scenes/animals/cat.tscn" id="6_nkeig"]
+[ext_resource type="Texture2D" uid="uid://264qxsnwiy6a" path="res://assets/environments/seasonal/autumn_forest/background/complete_static_bg_288x208.png" id="1_1seuy"]
+[ext_resource type="TileSet" uid="uid://cvrxrcw0v6oqd" path="res://assets/environments/tutorial/tutorial_tileset.tres" id="2_8a7m2"]
+[ext_resource type="PackedScene" uid="uid://bctte1x0mr77j" path="res://scenes/animals/frog.tscn" id="3_plydf"]
+[ext_resource type="PackedScene" uid="uid://cegu3atmbiooh" path="res://scenes/animals/bunny.tscn" id="4_5ntmo"]
+[ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="5_nkeig"]
+[ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="6_nfihu"]
+[ext_resource type="Script" uid="uid://ciek5k5ncsnt8" path="res://scripts/level/teleport_system.gd" id="7_coin_teleport"]
 [ext_resource type="PackedScene" uid="uid://c4hftaxcnddfp" path="res://scenes/animals/hedgehog.tscn" id="7_nfihu"]
-[ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="8_coin"]
-[ext_resource type="PackedScene" uid="uid://g0rkqhraxle0" path="res://scenes/animals/mouse.tscn" id="8_lgguw"]
-[ext_resource type="Texture2D" uid="uid://bbkw88ud2f06a" path="res://assets/environments/seasonal/grassland/background/complete_static_bg_288x208.png" id="9_bg"]
-[ext_resource type="PackedScene" uid="uid://v81g8o5ue0ti" path="res://scenes/animals/snail.tscn" id="9_jprdt"]
-[ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="11_nkeig"]
-[ext_resource type="PackedScene" uid="uid://bctte1x0mr77j" path="res://scenes/animals/frog.tscn" id="12_frog"]
-[ext_resource type="PackedScene" uid="uid://cegu3atmbiooh" path="res://scenes/animals/bunny.tscn" id="13_bunny"]
 
-[sub_resource type="CircleShape2D" id="CoinShape"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jprdt"]
 radius = 18.0
 
-[node name="Level1" type="Node2D" unique_id=956769092]
+[node name="Level1" type="Node2D" unique_id=905451117]
 texture_filter = 1
 
-[node name="Background" type="CanvasLayer" parent="." unique_id=654924450]
+[node name="Background" type="CanvasLayer" parent="." unique_id=1161750850]
 layer = -10
 
-[node name="BackgroundImage" type="TextureRect" parent="Background" unique_id=111488313]
-anchors_preset = -1
-anchor_top = 1.3700001
+[node name="BackgroundImage" type="TextureRect" parent="Background" unique_id=935558695]
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 2.3700001
-offset_left = 3.0
-offset_top = 311.23993
-offset_right = 3.0
-offset_bottom = 311.23987
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("9_bg")
+texture = ExtResource("1_1seuy")
 expand_mode = 1
 
-[node name="Level1Platforms" type="TileMapLayer" parent="." unique_id=135027354]
-position = Vector2(0, 1104)
+[node name="Platforms" type="TileMapLayer" parent="." unique_id=1466520748]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAABABAAAAADAAEAAAABABEAAAADAAIAAAABABIAAAADAAYAAAACABAAAAAEAAEAAAACABEAAAAEAAIAAAACABIAAAAEAAYAAAADABAAAAAEAAEAAAADABEAAAAEAAIAAAADABIAAAAEAAYAAAAEABAAAAAEAAEAAAAEABEAAAAEAAIAAAAEABIAAAAEAAYAAAAFABAAAAAEAAEAAAAFABEAAAAEAAIAAAAFABIAAAAEAAYAAAAGABAAAAAEAAEAAAAGABEAAAAEAAIAAAAGABIAAAAEAAYAAAAHABAAAAAEAAEAAAAHABEAAAAEAAIAAAAHABIAAAAEAAYAAAAIABAAAAAEAAEAAAAIABEAAAAEAAIAAAAIABIAAAAEAAYAAAAJABAAAAAEAAEAAAAJABEAAAAEAAIAAAAJABIAAAAEAAYAAAAMAAsAAAADAAEAAAAMAAwAAAADAAIAAAAMAA0AAAADAAYAAAANAAsAAAAEAAEAAAANAAwAAAAEAAIAAAANAA0AAAAEAAYAAAAOAAsAAAAEAAEAAAAOAAwAAAAEAAIAAAAOAA0AAAAEAAYAAAAPAAsAAAAEAAEAAAAPAAwAAAAEAAIAAAAPAA0AAAAEAAYAAAAQAAsAAAAEAAEAAAAQAAwAAAAEAAIAAAAQAA0AAAAEAAYAAAARAAsAAAAEAAEAAAARAAwAAAAEAAIAAAARAA0AAAAEAAYAAAASAAsAAAAEAAEAAAASAAwAAAAEAAIAAAASAA0AAAAEAAYAAAATAAsAAAAFAAEAAAATAAwAAAAFAAIAAAATAA0AAAAFAAYAAAAaAAkAAAADAAEAAAAaAAoAAAADAAIAAAAaAAsAAAADAAYAAAAbAAkAAAAEAAEAAAAbAAoAAAAEAAIAAAAbAAsAAAAEAAYAAAAcAAkAAAAEAAEAAAAcAAoAAAAEAAIAAAAcAAsAAAAEAAYAAAAdAAkAAAAEAAEAAAAdAAoAAAAEAAIAAAAdAAsAAAAEAAYAAAAeAAkAAAAEAAEAAAAeAAoAAAAEAAIAAAAeAAsAAAAEAAYAAAAfAAkAAAAEAAEAAAAfAAoAAAAEAAIAAAAfAAsAAAAEAAYAAAAgAAkAAAAEAAEAAAAgAAoAAAAEAAIAAAAgAAsAAAAEAAYAAAAhAAkAAAAEAAEAAAAhAAoAAAAEAAIAAAAhAAsAAAAEAAYAAAAiAAkAAAAFAAEAAAAiAAoAAAAFAAIAAAAiAAsAAAAFAAYAAAAKABAAAAAEAAEAAAALABAAAAAEAAEAAAAMABAAAAAFAAEAAAAKABEAAAAEAAQAAAAKABIAAAAEAAYAAAALABEAAAAEAAIAAAALABIAAAAEAAYAAAAMABEAAAAFAAIAAAAMABIAAAAFAAYAAAA=")
-tile_set = ExtResource("2_tiles")
+tile_map_data = PackedByteArray("AAANABMAAAADAAEAAAANABQAAAADAAIAAAANABUAAAADAAYAAAAOABMAAAAEAAEAAAAOABQAAAAEAAIAAAAOABUAAAAEAAYAAAAPABMAAAAEAAEAAAAPABQAAAAEAAIAAAAPABUAAAAEAAYAAAAQABMAAAAEAAEAAAAQABQAAAAEAAIAAAAQABUAAAAEAAYAAAARABMAAAAEAAEAAAARABQAAAAEAAIAAAARABUAAAAEAAYAAAASABMAAAAEAAEAAAASABQAAAAEAAIAAAASABUAAAAEAAYAAAATABMAAAAEAAEAAAATABQAAAAEAAIAAAATABUAAAAEAAYAAAAUABMAAAAEAAEAAAAUABQAAAAEAAIAAAAUABUAAAAEAAYAAAAVABMAAAAEAAEAAAAVABQAAAAEAAIAAAAVABUAAAAEAAYAAAAWABMAAAAEAAEAAAAWABQAAAAEAAIAAAAWABUAAAAEAAYAAAAXABMAAAAEAAEAAAAXABQAAAAEAAIAAAAXABUAAAAEAAYAAAAYABQAAAAFAAIAAAAYABUAAAAFAAYAAAAYABMAAAAFAAEAAAACABAAAAADAAEAAAACABEAAAADAAIAAAACABIAAAADAAYAAAADABAAAAAEAAEAAAADABEAAAAEAAIAAAADABIAAAAEAAYAAAAEABAAAAAEAAEAAAAEABEAAAAEAAIAAAAEABIAAAAEAAYAAAAFABAAAAAEAAEAAAAFABEAAAAEAAIAAAAFABIAAAAEAAYAAAAGABAAAAAEAAEAAAAGABEAAAAEAAIAAAAGABIAAAAEAAYAAAAHABAAAAAFAAEAAAAHABEAAAAFAAIAAAAHABIAAAAFAAYAAAAVAAoAAAADAAEAAAAVAAsAAAADAAIAAAAWAAoAAAAEAAEAAAAWAAsAAAAEAAIAAAAXAAoAAAAEAAEAAAAXAAsAAAAEAAIAAAAYAAoAAAAEAAEAAAAYAAsAAAAEAAIAAAAZAAoAAAAEAAEAAAAZAAsAAAAEAAIAAAAaAAoAAAAFAAEAAAAaAAsAAAAFAAIAAAAVAAwAAAADAAYAAAAWAAwAAAAEAAYAAAAXAAwAAAAEAAYAAAAYAAwAAAAEAAYAAAAZAAwAAAAEAAYAAAAaAAwAAAAFAAYAAAA=")
+tile_set = ExtResource("2_8a7m2")
 
-[node name="Animals" type="Node2D" parent="." unique_id=1920798592]
-position = Vector2(0, 1104)
+[node name="Animals" type="Node2D" parent="." unique_id=1644714656]
 
-[node name="Frog" parent="Animals" unique_id=340289765 instance=ExtResource("12_frog")]
-position = Vector2(215, 511)
+[node name="Frog" parent="Animals" unique_id=1406623710 instance=ExtResource("3_plydf")]
+position = Vector2(480, 608)
 
-[node name="Bunny" parent="Animals" unique_id=497391092 instance=ExtResource("13_bunny")]
-position = Vector2(520, 352)
+[node name="Bunny" parent="Animals" unique_id=92136357 instance=ExtResource("4_5ntmo")]
+position = Vector2(687, 604)
 
-[node name="Axolotl" parent="Animals" unique_id=938545672 instance=ExtResource("5_5ntmo")]
-position = Vector2(860, 270)
+[node name="Hedgehog" parent="Animals" unique_id=938545672 instance=ExtResource("7_nfihu")]
+position = Vector2(585, 610)
 
-[node name="Cat" parent="Animals" unique_id=1551378051 instance=ExtResource("6_nkeig")]
-position = Vector2(319, 495)
-
-[node name="Hedgehog" parent="Animals" unique_id=1974621894 instance=ExtResource("7_nfihu")]
-position = Vector2(414, 345)
-
-[node name="Mouse" parent="Animals" unique_id=1626366451 instance=ExtResource("8_lgguw")]
-position = Vector2(605, 341)
-
-[node name="Snail" parent="Animals" unique_id=639336272 instance=ExtResource("9_jprdt")]
-position = Vector2(99, 501)
-
-[node name="Coin" type="Area2D" parent="." unique_id=1588024645]
-position = Vector2(1032, 1364)
+[node name="Coin" type="Area2D" parent="." unique_id=105208153]
+position = Vector2(802, 289)
 collision_layer = 0
-collision_mask = 2
+script = ExtResource("7_coin_teleport")
+next_level = "res://scenes/levels/level2.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=923677370]
-shape = SubResource("CoinShape")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=1297080884]
+shape = SubResource("CircleShape2D_jprdt")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Coin" unique_id=1007945317]
+[node name="Sprite" type="AnimatedSprite2D" parent="Coin" unique_id=771036589]
 scale = Vector2(3, 3)
-sprite_frames = ExtResource("8_coin")
+sprite_frames = ExtResource("5_nkeig")
 animation = &"coin"
 autoplay = "coin"
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=401263272]
-position = Vector2(96, 1616)
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1914183881]
+position = Vector2(102, 467)
 
-[node name="level_killzone" parent="." unique_id=1300237386 instance=ExtResource("11_nkeig")]
-position = Vector2(542, 1921)
+[node name="CameraPosition" type="Marker2D" parent="SpawnPoint" unique_id=1081378420]
+position = Vector2(504, -26)
+
+[node name="LevelKillzone" parent="." unique_id=1300237386 instance=ExtResource("6_nfihu")]
+position = Vector2(624, 800)
