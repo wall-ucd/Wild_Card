@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://brpgbm4qopyml"]
+
+[ext_resource type="Script" uid="uid://n3ft620hmi0m" path="res://scenes/ui/card.gd" id="1_2rkeb"]
+[ext_resource type="Texture2D" uid="uid://ftmgq3cnblvl" path="res://assets/ui/cards/card_sprite_sheet.png" id="2_ra13p"]
+[ext_resource type="Texture2D" uid="uid://bxh2ebs3gjvkf" path="res://assets/ui/cards/glow_gradient_texture.tres" id="3_mli0n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41f5n"]
+atlas = ExtResource("2_ra13p")
+region = Rect2(54, 33, 68, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra13p"]
+atlas = ExtResource("2_ra13p")
+region = Rect2(358, 646, 20, 20)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulu11"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgkcd"]
+texture = ExtResource("3_mli0n")
+
+[node name="Card" type="Control" unique_id=1197229841]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+offset_transform_scale = Vector2(2, 2)
+script = ExtResource("1_2rkeb")
+
+[node name="CardBase" type="TextureRect" parent="." unique_id=1224407974]
+layout_mode = 0
+offset_left = -34.0
+offset_top = -109.0
+offset_right = 34.0
+texture = SubResource("AtlasTexture_41f5n")
+
+[node name="CardNumberBox" type="TextureRect" parent="CardBase" unique_id=930219522]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 82.0
+offset_right = 44.0
+offset_bottom = 102.0
+texture = SubResource("AtlasTexture_ra13p")
+
+[node name="CardNumberLabel" type="Label" parent="CardBase/CardNumberBox" unique_id=869804053]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 22.0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=668989925]
+layout_mode = 0
+offset_left = -34.0
+offset_top = -109.0
+offset_right = 34.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ulu11")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cgkcd")
