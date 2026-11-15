@@ -1,17 +1,18 @@
-extends Node2D
+extends Area2D
 
 
-# Called when the node enters the scene tree for the first time.
+signal level_requested(scene_path: String)
+
+# Leave empty for a coin that does not change levels.
+@export_file("*.tscn") var next_level := ""
+var _triggered := false
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	# A coin can use its own Area2D instead of a second overlapping hitbox.
+	body_entered.connect(_on_teleport_entrance_body_entered)
 
 func _on_teleport_entrance_body_entered(body: Node2D) -> void:
-	if body == %Player:
-		# Move player to next level.
-		body.global_position = $Teleport_Exit.global_position
-		%Camera2D.global_position = $NewCameraLocation.global_position
+	if not body is Player or next_level.is_empty() or _triggered:
+		return
+	_triggered = true
+	level_requested.emit(next_level)

@@ -20,6 +20,21 @@ var ability2 : Command #dash
 var ability3 : Command #glide
 
 
+func teleport_to_spawn(spawn_position: Vector2) -> void:
+	# Set the checkpoint explicitly, including short-distance level transitions.
+	global_position = spawn_position
+	_last_teleported_position = spawn_position
+	previous_frame_position = spawn_position
+	velocity = Vector2.ZERO
+	_dead = false
+	double_jumped = false
+	dashing = false
+	dashCount = 20
+	gliding = false
+	glideCount = 200
+	gravity = defaultGravity
+
+
 func take_damage():
 	# This just oofs the player.
 	$TakeDamageSound.pitch_scale = randf_range(0.65, 1.2)
