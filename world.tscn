@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://b2h4mi8ypha3p"]
 
+[ext_resource type="Script" uid="uid://bgf2e1rek3p1o" path="res://signal_manager.gd" id="1_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://d27qqesk7cbn8" path="res://scenes/levels/level1.tscn" id="2_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://du2jvlaeh6ep0" path="res://scenes/ui/card_display.tscn" id="3_dwbse"]
 [ext_resource type="Script" uid="uid://brb3f1o738e5o" path="res://scripts/ui/card_display.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://chile538motti" path="res://scenes/player.tscn" id="3_tlwt5"]
+[ext_resource type="Script" uid="uid://8erj84mav0dd" path="res://scripts/ui.gd" id="4_ioo17"]
 [ext_resource type="PackedScene" uid="uid://ov71gkp404q4" path="res://scenes/levels/tutorial_level.tscn" id="4_tutorial"]
 [ext_resource type="AudioStream" uid="uid://c64t3hxwlth05" path="res://audio/music/tmp_background.mp3" id="6_dwbse"]
 [ext_resource type="Script" uid="uid://cimlhnuj3uydv" path="res://scripts/level/world.gd" id="8_world"]
@@ -11,6 +15,9 @@ size = Vector2(29, 53)
 
 [node name="World" type="Node2D" unique_id=978490405]
 script = ExtResource("8_world")
+
+[node name="SignalManager" type="Node" parent="." unique_id=489091110]
+script = ExtResource("1_gbfbk")
 
 [node name="LevelContainer" type="Node2D" parent="." unique_id=1913025260]
 
@@ -22,12 +29,14 @@ position = Vector2(576, 324)
 zoom = Vector2(0.5, 0.5)
 
 [node name="UI" type="Control" parent="Camera2D" unique_id=645445383]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1152.0
 offset_top = -646.0
 offset_right = 1147.0
 offset_bottom = 649.0
+script = ExtResource("4_ioo17")
 
 [node name="In_Game" type="Control" parent="Camera2D/UI" unique_id=1314654221]
 layout_mode = 1
@@ -76,18 +85,8 @@ theme_override_font_sizes/font_size = 32
 text = "Attempts:1"
 horizontal_alignment = 2
 
-[node name="CardDisplay" type="Control" parent="Camera2D/UI" unique_id=604687196]
+[node name="CardDisplay" parent="Camera2D/UI" unique_id=829476279 instance=ExtResource("3_dwbse")]
 layout_mode = 1
-anchor_top = 0.84000003
-anchor_right = 0.36
-anchor_bottom = 1.0
-offset_left = 80.0
-offset_top = -67.80005
-offset_right = 80.27991
-offset_bottom = -67.47998
-grow_vertical = 2
-script = ExtResource("1_f3sb7")
-numCards = 3
 
 [node name="Player" parent="." unique_id=661114375 instance=ExtResource("3_tlwt5")]
 unique_name_in_owner = true
@@ -101,7 +100,5 @@ shape = SubResource("RectangleShape2D_dwbse")
 stream = ExtResource("6_dwbse")
 autoplay = true
 bus = &"Background Music"
-
-[connection signal="card_pickup" from="Player/CardsToPickupManager" to="Camera2D/UI/CardDisplay" method="_on_card_pickup"]
 
 [editable path="Player"]
