@@ -1,5 +1,5 @@
+class_name Globals
 extends Node
-class_name global_variables
 
 enum animal_type {
 	FROG,
