@@ -34,6 +34,13 @@ offset_top = -109.0
 offset_right = 34.0
 texture = SubResource("AtlasTexture_41f5n")
 
+[node name="Face" type="TextureRect" parent="CardBase" unique_id=510648400]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 63.0
+offset_bottom = 104.0
+
 [node name="CardNumberBox" type="TextureRect" parent="CardBase" unique_id=930219522]
 layout_mode = 0
 offset_left = 24.0

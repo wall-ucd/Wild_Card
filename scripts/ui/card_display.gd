@@ -1,28 +1,24 @@
 class_name CardDisplay
 extends Control
 
-var numCards : int = 0
+@export var cardSpacing := 100
+
 var cards : Array[Card]
 var cardScene : PackedScene = preload("res://scenes/ui/card.tscn")
 
 func addCard(type : Globals.animal_type) -> void:
-	cards.push_back(cardScene.instantiate())
-	if type == Globals.animal_type.FROG:
-		print("Picked up frog")
-	elif type == Globals.animal_type.CAT:
-		print("Picked up cat")
-	elif type == Globals.animal_type.HEDGEHOG:
-		print("Picked up hedgehog")
-	elif type == Globals.animal_type.BUNNY:
-		print("Picked up bunny")
-	elif type == Globals.animal_type.SNAIL:
-		print("Picked up snail")
-	elif type == Globals.animal_type.MOUSE:
-		print("Picked up mouse")
-	elif type == Globals.animal_type.AXOLOTL:
-		print("Picked up axolotl")
-	elif type == Globals.animal_type.BAT:
-		print("Picked up bat")
+	# Check if card of type already exists
+	for i in cards.size():
+		if cards[i].animal == type:
+			cards[i].increment()
+			return
+	
+	# Create a new card
+	var instance := cardScene.instantiate() as Card
+	var x := cardSpacing * cards.size()
+	instance.initialize(type, x)
+	cards.push_back(instance)
+	add_child(instance)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,12 +30,4 @@ func _process(delta: float) -> void:
 	pass
 	
 func _draw() -> void:
-	const X_OFFSET := 20
-	const CARD_DIST := 160
-	const CARD_WIDTH := 120
-	const CARD_HEIGHT := 160
-	return
-	for i in numCards:
-		var xPos := X_OFFSET + CARD_DIST * i
-		var yPos := 0
-		draw_rect(Rect2(xPos, yPos, CARD_WIDTH, CARD_HEIGHT), Color.RED)
+	pass

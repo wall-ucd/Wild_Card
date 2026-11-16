@@ -80,6 +80,7 @@ horizontal_alignment = 2
 
 [node name="CardDisplay" parent="Camera2D/UI" unique_id=829476279 instance=ExtResource("3_dwbse")]
 layout_mode = 1
+cardSpacing = 120
 
 [node name="Player" parent="." unique_id=661114375 instance=ExtResource("3_tlwt5")]
 unique_name_in_owner = true
