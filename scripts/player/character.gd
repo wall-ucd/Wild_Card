@@ -1,7 +1,6 @@
 class_name Character
 extends CharacterBody2D
 
-signal CharacterDirectionChange(facing:Facing)
 
 enum Facing { 
 	LEFT,
@@ -23,10 +22,8 @@ var idle : Command
 var facing:Facing = Facing.RIGHT
 
 var jumping:bool = false
-var defaultGravity: int = ProjectSettings.get("physics/2d/default_gravity")
-var gravity:int = defaultGravity 
-
-var _horizontal_input : float
+var DEFAULT_GRAVITY: int = ProjectSettings.get("physics/2d/default_gravity")
+var gravity:int = DEFAULT_GRAVITY
 
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var sprite:Sprite2D = $Sprite2D
@@ -36,18 +33,9 @@ func _ready() -> void:
 	change_facing(facing)
 
 
-func move(value: float) -> void:
-	_horizontal_input = value
-
-
 func change_facing(new_facing:Facing) -> void:
 	facing = new_facing
-	emit_signal("CharacterDirectionChange", facing)
-
-
-func command_callback(_name:String) -> void:
-	pass
-
+	
 
 func _physics_process(delta: float) -> void: 
 	_apply_gravity(delta)
