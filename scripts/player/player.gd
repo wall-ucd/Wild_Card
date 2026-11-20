@@ -1,23 +1,39 @@
 class_name Player
 extends Character
 
-var _dead:bool = false
-var double_jumped:bool = false
-var dashing:bool = false
-var dashCount:int = 20
-var gliding:bool = false
-var glideCount:int = 200
+#Defaults
+var DASH_DURATION:float = 0.35
+var GLIDE_DURATION:float = 2
+var SPEED_DURATION:float = 2
+var JUMP_DURATION:float = 2
+var WALL_JUMP_BOUNCE_DURATION:float = 0.2
 
+#Variables to assist with abilities
+var dashing:bool = false
+var dashCount:float = DASH_DURATION
+var gliding:bool = false
+var glideCount:float = GLIDE_DURATION
+var speedBoost:bool = false
+var speedCount:float = SPEED_DURATION
+var jumpBoost:bool = false
+var jumpCount:float = JUMP_DURATION
+var wallJumping:bool = false
+var wallCount:float = WALL_JUMP_BOUNCE_DURATION
+
+var _dead:bool = false
 var _last_teleported_position:Vector2 = Vector2(0, 0)
 var previous_frame_position:Vector2
 signal died_and_respawned
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
-var ability0 : Command #teleport
-var ability1 : Command #double jump
-var ability2 : Command #dash
-var ability3 : Command #glide
+var ability0:Command #teleport
+var ability1:Command #double jump
+var ability2:Command #dash
+var ability3:Command #glide
+var ability4:Command #jump boost
+var ability5:Command #speed boost
+var ability6:Command #wall jump
 
 
 func teleport_to_spawn(spawn_position: Vector2) -> void:
@@ -27,12 +43,17 @@ func teleport_to_spawn(spawn_position: Vector2) -> void:
 	previous_frame_position = spawn_position
 	velocity = Vector2.ZERO
 	_dead = false
-	double_jumped = false
 	dashing = false
-	dashCount = 20
+	dashCount = DASH_DURATION
 	gliding = false
-	glideCount = 200
-	gravity = defaultGravity
+	glideCount = GLIDE_DURATION
+	jumpBoost = false
+	jumpCount = JUMP_DURATION
+	speedBoost = false
+	speedCount = SPEED_DURATION
+	gravity = DEFAULT_GRAVITY
+	wallJumping = false
+	wallCount = WALL_JUMP_BOUNCE_DURATION
 
 
 func take_damage():
@@ -57,19 +78,6 @@ func _physics_process(delta: float):
 	previous_frame_position = self.global_position
 
 	var move_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-
-	if is_on_floor():
-		double_jumped = false
-
-	if Input.is_action_just_pressed("jump"):
-		up_cmd.execute(self)
-		
-
-	if is_on_floor():
-		double_jumped = false
-
-	if Input.is_action_just_pressed("jump"):
-		up_cmd.execute(self)
 		
 	if Input.is_action_just_pressed("jump"):
 		up_cmd.execute(self)
@@ -86,20 +94,47 @@ func _physics_process(delta: float):
 		
 	if Input.is_action_just_pressed("ability3"):
 		ability3.execute(self)
+		
+	if Input.is_action_just_pressed("ability4"):
+		ability4.execute(self)
+		
+	if Input.is_action_just_pressed("ability5"):
+		ability5.execute(self)
+		
+	if Input.is_action_just_pressed("ability6"):
+		ability6.execute(self)
+	
+	if jumpBoost:
+		jumpCount -= delta
+		if jumpCount <= 0:
+			jumpBoost = false
+			jump_velocity = DEFAULT_JUMP_VELOCITY
+			jumpCount = JUMP_DURATION
+	
+	if speedBoost:
+		speedCount -= delta
+		if speedCount <= 0:
+			speedBoost = false
+			movement_speed = DEFAULT_MOVE_VELOCITY
+			speedCount = SPEED_DURATION
 	
 	if gliding:
-		glideCount -= 1
+		glideCount -= delta
 		if glideCount <= 0 || is_on_floor():
 			gliding = false
-			glideCount = 200
-			gravity = defaultGravity
+			glideCount = GLIDE_DURATION
+			gravity = DEFAULT_GRAVITY
 	
 	if dashing:
-		dashCount -= 1
+		dashCount -= delta
 		if dashCount <= 0:
 			dashing = false
-			dashCount = 20
-			
+			dashCount = DASH_DURATION
+	elif wallJumping:
+		wallCount -= delta
+		if wallCount <= 0:
+			wallJumping = false
+			wallCount = WALL_JUMP_BOUNCE_DURATION
 	else:
 		if move_input > 0.1:
 			right_cmd.execute(self)
@@ -129,6 +164,9 @@ func bind_player_input_commands():
 	ability1 = DoubleJumpCommand.new()
 	ability2 = DashCommand.new()
 	ability3 = GlideCommand.new()
+	ability4 = SpeedBoostCommand.new()
+	ability5 = JumpBoostCommand.new()
+	ability6 = WallJumpCommand.new()
 
 
 func unbind_player_input_commands():
@@ -141,6 +179,9 @@ func unbind_player_input_commands():
 	ability1 = IdleCommand.new()
 	ability2 = IdleCommand.new()
 	ability3 = IdleCommand.new()
+	ability4 = IdleCommand.new()
+	ability5 = IdleCommand.new()
+	ability6 = IdleCommand.new()
 
 
 # Logic to support the state machine in the AnimationTree (idle <-> walk, jump on leaving the floor).
