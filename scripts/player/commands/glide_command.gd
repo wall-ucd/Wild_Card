@@ -7,6 +7,6 @@ func execute(character: Character) -> Status:
 		character.gliding = true
 		character.velocity.y = 0
 		@warning_ignore("integer_division")
-		character.gravity = character.gravity / 4
+		character.gravity = character.gravity / 12
 	
 	return Status.DONE
