@@ -2,7 +2,7 @@ class_name Player
 extends Character
 
 #Defaults
-var DASH_DURATION:float = 0.35
+var DASH_DURATION:float = 0.15
 var GLIDE_DURATION:float = 2
 var SPEED_DURATION:float = 2
 var JUMP_DURATION:float = 2
@@ -199,3 +199,11 @@ func _manage_animation_tree_state() -> void:
 	else:
 		animation_tree["parameters/conditions/jumping"] = true
 		animation_tree["parameters/conditions/on_floor"] = false
+
+
+func _apply_gravity(delta: float) -> void:
+	if dashing:
+		velocity.y = 0
+		return
+
+	super._apply_gravity(delta)
