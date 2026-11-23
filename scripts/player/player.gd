@@ -62,6 +62,24 @@ func take_damage():
 	$TakeDamageSound.play(0.7)
 	_dead = true
 
+# I personally think it makes more sense to store the abilities in an array, like abilities[CAT]
+# As it is, this function needs to be updated as new animals are added
+func use_ability(animal : Globals.animal_type):
+	if(animal == Globals.animal_type.FROG):
+		ability1.execute(self)
+	if(animal == Globals.animal_type.CAT):
+		ability1.execute(self)
+	if(animal == Globals.animal_type.HEDGEHOG):
+		ability2.execute(self)
+	if(animal == Globals.animal_type.BUNNY):
+		ability2.execute(self)
+	if(animal == Globals.animal_type.SNAIL):
+		ability4.execute(self)
+	if(animal == Globals.animal_type.MOUSE):
+		ability5.execute(self)
+	if(animal == Globals.animal_type.AXOLOTL):
+		ability6.execute(self)
+
 func _physics_process(delta: float):
 	if _dead:
 		# Teleport back to last teleported position
@@ -81,28 +99,6 @@ func _physics_process(delta: float):
 		
 	if Input.is_action_just_pressed("jump"):
 		up_cmd.execute(self)
-		
-	#Ability activations. Will be modified
-	if Input.is_action_just_pressed("ability0"):
-		ability0.execute(self)
-		
-	if Input.is_action_just_pressed("ability1"):
-		ability1.execute(self)
-	
-	if Input.is_action_just_pressed("ability2"):
-		ability2.execute(self)
-		
-	if Input.is_action_just_pressed("ability3"):
-		ability3.execute(self)
-		
-	if Input.is_action_just_pressed("ability4"):
-		ability4.execute(self)
-		
-	if Input.is_action_just_pressed("ability5"):
-		ability5.execute(self)
-		
-	if Input.is_action_just_pressed("ability6"):
-		ability6.execute(self)
 	
 	if jumpBoost:
 		jumpCount -= delta
