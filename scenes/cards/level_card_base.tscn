@@ -1,110 +1,18 @@
 [gd_scene format=3 uid="uid://ht2sw3bwf4wa"]
 
 [ext_resource type="Script" uid="uid://de4n068lsfese" path="res://scripts/level/card_pickup.gd" id="1_c7sq6"]
-[ext_resource type="Texture2D" uid="uid://bgxho6a3ycjms" path="res://assets/ui/card.png" id="1_i64fm"]
 [ext_resource type="AudioStream" uid="uid://qq2q8ji2f2ej" path="res://audio/level/pickup.wav" id="2_11l1o"]
+[ext_resource type="Texture2D" uid="uid://ftmgq3cnblvl" path="res://assets/ui/cards/card_sprite_sheet.png" id="4_sheet"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d14el"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ikuy"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnlwo"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jig8b"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xmuha"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfxoj"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsmju"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s0mny"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cc30"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(128, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rojmm"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(144, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ls27i"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(160, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ssuvv"]
-atlas = ExtResource("1_i64fm")
-region = Rect2(176, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ybbpx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d14el")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ikuy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wnlwo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jig8b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xmuha")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kfxoj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jsmju")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s0mny")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7cc30")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rojmm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ls27i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ssuvv")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_h7n1j"]
-radius = 5.0
+[sub_resource type="RectangleShape2D" id="CircleShape2D_h7n1j"]
+size = Vector2(68, 109)
 
 [sub_resource type="Animation" id="Animation_d14el"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/path = NodePath("Card:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -143,7 +51,7 @@ resource_name = "pickup"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/path = NodePath("Card:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -197,14 +105,43 @@ _data = {
 &"pickup": SubResource("Animation_1ikuy")
 }
 
-[node name="card_pickup" type="Area2D" unique_id=1441178161]
-scale = Vector2(5, 5)
+[node name="LevelCard" type="Area2D" unique_id=1441178161]
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_c7sq6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=126732787]
+[node name="Card" type="Node2D" parent="." unique_id=126732787]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_ybbpx")
-autoplay = "default"
+position = Vector2(0, 54)
+
+[node name="Front" type="Node2D" parent="Card" unique_id=740319272]
+
+[node name="Base" type="Sprite2D" parent="Card/Front" unique_id=1111835353]
+position = Vector2(-34, -109)
+texture = ExtResource("4_sheet")
+centered = false
+region_enabled = true
+region_rect = Rect2(166, 33, 68, 109)
+
+[node name="Background" type="Sprite2D" parent="Card/Front" unique_id=1068079766]
+modulate = Color(0.75, 0.75, 0.75, 1)
+position = Vector2(-29, -104)
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 58, 99)
+
+[node name="Animal" type="Sprite2D" parent="Card/Front" unique_id=64207904]
+scale = Vector2(2, 2)
+
+[node name="IdleAnimation" type="AnimationPlayer" parent="Card/Front" unique_id=1455211660]
+autoplay = &"idle"
+
+[node name="Back" type="Sprite2D" parent="Card" unique_id=126732789]
+visible = false
+texture = ExtResource("4_sheet")
+centered = false
+offset = Vector2(-34, -109)
+region_enabled = true
+region_rect = Rect2(54, 562, 68, 109)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92004564]
 shape = SubResource("CircleShape2D_h7n1j")

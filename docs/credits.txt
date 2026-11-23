@@ -38,6 +38,10 @@ https://nyknck.itch.io/fx062
 9. Cave Bats || Pixel Asset Pack
 https://pop-shop-packs.itch.io/cave-bat-pixel-asset-pack
 
+10. Free Smoke FX Pixel 2
+https://bdragon1727.itch.io/free-smoke-fx-pixel-2
+
+
 UI
 ------------
 1. Sprout Lands - UI Pack (Basic pack) by Cup Nooble  [free basic license: non-commercial use only, no redistribution]
@@ -45,3 +49,6 @@ https://cupnooble.itch.io/
 
 2. Card Game Layout Templated
 https://guawoo.itch.io/card-game-layout-template
+
+3. Free Pixel Status Auras & Buffs
+https://miraforge.itch.io/free-pixel-status-auras-and-buffs

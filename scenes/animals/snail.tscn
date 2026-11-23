@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://v81g8o5ue0ti"]
 
+[ext_resource type="Script" path="res://scripts/animals/animal_animator.gd" id="0_animator"]
 [ext_resource type="Texture2D" uid="uid://ux4xb8vm8h2r" path="res://assets/animals/snail/sprite_sheets/jitsu_snail_small.png" id="1_sheet"]
-[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_hykoi"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
@@ -97,6 +97,8 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 monitorable = false
+script = ExtResource("0_animator")
+walkSpeed = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441874250]
 position = Vector2(0, -16)
@@ -119,7 +121,3 @@ tree_root = SubResource("snail_state_machine")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/moving = false
-
-[node name="SNAIL" parent="." unique_id=1441178161 instance=ExtResource("2_hykoi")]
-visible = false
-position = Vector2(0, -13.999999)

@@ -35,7 +35,7 @@ func decrement() -> void:
 	updateText()
 	
 func updateText() -> void:
-	$CardBase/CardNumberBox/CardNumberLabel.text = str(quantity)
+	$Front/CountBadge/CountLabel.text = str(quantity)
 
 func signalCardPressed():
 	# TODO: have some checking if the card can be used

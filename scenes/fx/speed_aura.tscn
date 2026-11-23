@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/fx/buff_aura.gd" id="1_script"]
+[ext_resource type="SpriteFrames" path="res://assets/fx/buffs/strength_up.tres" id="2_frames"]
+
+[node name="SpeedAura" type="Node2D"]
+z_index = 5
+texture_filter = 1
+script = ExtResource("1_script")
+
+[node name="Aura" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -24.5)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_frames")
+animation = &"loop"

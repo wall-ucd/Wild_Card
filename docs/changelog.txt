@@ -7,7 +7,38 @@ changes
 
 ------------------------------------------------
 
-***Previous Versions go here if you want to go back and add them****
+Version 1.2 - Michael
+--------------
+- added animal card art: one scene per animal for the level and one for the UI (bottom left)
+	res://scenes/cards/level/ (frog_level_card.tscn etc.) and res://scenes/cards/ui/ (frog_ui_card.tscn etc.)
+	built from 2 base scenes: res://scenes/cards/level_card_base.tscn and res://scenes/cards/ui_card_base.tscn
+	(change a base scene to change every card, change an animal's scene to change just that card)
+- each card is the brown card + the animal's background + the animal playing its idle animation
+- level cards float, spin every 4 seconds, have a shadow, and float up and fade out when picked up
+- level cards are half size (scale of the root node in level_card_base.tscn)
+- replaced the animals placed in the levels with their level cards (the "Animals" node is now "Cards")
+- moved scenes/card_pickup.tscn to scenes/cards/level_card_base.tscn, removed scenes/ui/card.tscn
+- card_pickup.gd: added "animal" (picking a card up gives that animal) + the float / spin / pickup animations
+- card_display.gd: picks the right UI card scene for each animal (cardScenes)
+- card.gd: the card number is now at Front/CountBadge/CountLabel
+- added animal_animator.gd to every animal scene (res://scripts/animals/animal_animator.gd):
+	plays idle / walk / jump / land by itself from updateAnimation(velocity, onFloor, delta),
+	plus faceLeft() and playAbility() (cat pounce, hedgehog dash). Settings are in each animal's Inspector.
+	(it turns the animal's AnimationTree off and plays the AnimationPlayer itself)
+- added jump frames for frog (hop, air pose, landing) and bunny (hop, air pose, landing, double jump hop)
+- removed the hidden card pickups from the animal scenes
+- player: jump is now a quick hop and then holds one frame until landing, added a "land" animation and
+  "land" state in the AnimationTree (jump -> land -> idle)
+- added transformation smoke (res://scenes/fx/transformation_smoke.tscn): plays when shown,
+  "covered" signal = the moment to swap the player and the animal, "finished" signal when it's gone
+- added speed aura (res://scenes/fx/speed_aura.tscn), already in player.tscn as SpeedAura (hidden):
+	show() to start it, playEnd() to end it
+- added layered parallax backgrounds to the levels (res://scripts/level/level_background.gd),
+  replaces the stretched background picture. Uses the layers from the *_scenery.tscn files
+- added assets: Free Smoke Fx Pixel 2 (res://assets/fx/smoke_pixel_2) and
+  Free Pixel Status Auras and Buffs, strength up (res://assets/fx/buffs, license included)
+- added docs/animations.txt: every animation and how to call it
+
 
 Version 1.1 - Michael
 --------------
