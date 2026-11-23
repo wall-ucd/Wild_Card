@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/cards/ui_card_base.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://assets/environments/seasonal/tropics/background/complete_static_bg_288x208.png" id="2_background"]
+[ext_resource type="Texture2D" path="res://assets/animals/axolotl/sprite_sheets/tiny_axolotl_spritesheet_albino.png" id="3_animal"]
+
+[sub_resource type="Animation" id="Animation_idle"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idle"]
+_data = {
+&"idle": SubResource("Animation_idle")
+}
+
+[node name="AxolotlUiCard" instance=ExtResource("1_base")]
+
+[node name="Background" parent="Front"]
+texture = ExtResource("2_background")
+region_rect = Rect2(96, 109, 58, 99)
+
+[node name="Animal" parent="Front"]
+position = Vector2(0, -42)
+texture = ExtResource("3_animal")
+hframes = 8
+vframes = 16
+frame = 0
+
+[node name="IdleAnimation" parent="Front"]
+libraries/ = SubResource("AnimationLibrary_idle")

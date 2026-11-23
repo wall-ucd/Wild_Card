@@ -1,13 +1,13 @@
 [gd_scene format=4 uid="uid://3qaq347d4hia"]
 
-[ext_resource type="Texture2D" uid="uid://264qxsnwiy6a" path="res://assets/environments/seasonal/autumn_forest/background/complete_static_bg_288x208.png" id="1_1seuy"]
 [ext_resource type="TileSet" uid="uid://cvrxrcw0v6oqd" path="res://assets/environments/tutorial/tutorial_tileset.tres" id="2_8a7m2"]
-[ext_resource type="PackedScene" uid="uid://bctte1x0mr77j" path="res://scenes/animals/frog.tscn" id="3_plydf"]
-[ext_resource type="PackedScene" uid="uid://cegu3atmbiooh" path="res://scenes/animals/bunny.tscn" id="4_5ntmo"]
 [ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="5_nkeig"]
 [ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="6_nfihu"]
 [ext_resource type="Script" uid="uid://ciek5k5ncsnt8" path="res://scripts/level/teleport_system.gd" id="7_coin_teleport"]
-[ext_resource type="PackedScene" uid="uid://c4hftaxcnddfp" path="res://scenes/animals/hedgehog.tscn" id="7_nfihu"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/frog_level_card.tscn" id="card_frog"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/bunny_level_card.tscn" id="card_bunny"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/hedgehog_level_card.tscn" id="card_hedgehog"]
+[ext_resource type="Script" path="res://scripts/level/level_background.gd" id="98_levelbg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jprdt"]
 radius = 18.0
@@ -18,31 +18,25 @@ texture_filter = 1
 [node name="Background" type="CanvasLayer" parent="." unique_id=1161750850]
 layer = -10
 
-[node name="BackgroundImage" type="TextureRect" parent="Background" unique_id=935558695]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("1_1seuy")
-expand_mode = 1
+[node name="Parallax" type="Node2D" parent="Background" unique_id=935558695]
+script = ExtResource("98_levelbg")
+scenery = "res://assets/environments/seasonal/autumn_forest/autumn_forest_scenery.tscn"
 
 [node name="Platforms" type="TileMapLayer" parent="." unique_id=1466520748]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAANABMAAAADAAEAAAANABQAAAADAAIAAAANABUAAAADAAYAAAAOABMAAAAEAAEAAAAOABQAAAAEAAIAAAAOABUAAAAEAAYAAAAPABMAAAAEAAEAAAAPABQAAAAEAAIAAAAPABUAAAAEAAYAAAAQABMAAAAEAAEAAAAQABQAAAAEAAIAAAAQABUAAAAEAAYAAAARABMAAAAEAAEAAAARABQAAAAEAAIAAAARABUAAAAEAAYAAAASABMAAAAEAAEAAAASABQAAAAEAAIAAAASABUAAAAEAAYAAAATABMAAAAEAAEAAAATABQAAAAEAAIAAAATABUAAAAEAAYAAAAUABMAAAAEAAEAAAAUABQAAAAEAAIAAAAUABUAAAAEAAYAAAAVABMAAAAEAAEAAAAVABQAAAAEAAIAAAAVABUAAAAEAAYAAAAWABMAAAAEAAEAAAAWABQAAAAEAAIAAAAWABUAAAAEAAYAAAAXABMAAAAEAAEAAAAXABQAAAAEAAIAAAAXABUAAAAEAAYAAAAYABQAAAAFAAIAAAAYABUAAAAFAAYAAAAYABMAAAAFAAEAAAACABAAAAADAAEAAAACABEAAAADAAIAAAACABIAAAADAAYAAAADABAAAAAEAAEAAAADABEAAAAEAAIAAAADABIAAAAEAAYAAAAEABAAAAAEAAEAAAAEABEAAAAEAAIAAAAEABIAAAAEAAYAAAAFABAAAAAEAAEAAAAFABEAAAAEAAIAAAAFABIAAAAEAAYAAAAGABAAAAAEAAEAAAAGABEAAAAEAAIAAAAGABIAAAAEAAYAAAAHABAAAAAFAAEAAAAHABEAAAAFAAIAAAAHABIAAAAFAAYAAAAVAAoAAAADAAEAAAAVAAsAAAADAAIAAAAWAAoAAAAEAAEAAAAWAAsAAAAEAAIAAAAXAAoAAAAEAAEAAAAXAAsAAAAEAAIAAAAYAAoAAAAEAAEAAAAYAAsAAAAEAAIAAAAZAAoAAAAEAAEAAAAZAAsAAAAEAAIAAAAaAAoAAAAFAAEAAAAaAAsAAAAFAAIAAAAVAAwAAAADAAYAAAAWAAwAAAAEAAYAAAAXAAwAAAAEAAYAAAAYAAwAAAAEAAYAAAAZAAwAAAAEAAYAAAAaAAwAAAAFAAYAAAA=")
 tile_set = ExtResource("2_8a7m2")
 
-[node name="Animals" type="Node2D" parent="." unique_id=1644714656]
+[node name="Cards" type="Node2D" parent="." unique_id=1644714656]
 
-[node name="Frog" parent="Animals" unique_id=1406623710 instance=ExtResource("3_plydf")]
-position = Vector2(480, 608)
+[node name="FrogCard" parent="Cards" unique_id=1406623710 instance=ExtResource("card_frog")]
+position = Vector2(480, 571)
 
-[node name="Bunny" parent="Animals" unique_id=92136357 instance=ExtResource("4_5ntmo")]
-position = Vector2(687, 604)
+[node name="BunnyCard" parent="Cards" unique_id=92136357 instance=ExtResource("card_bunny")]
+position = Vector2(687, 567)
 
-[node name="Hedgehog" parent="Animals" unique_id=938545672 instance=ExtResource("7_nfihu")]
-position = Vector2(585, 610)
+[node name="HedgehogCard" parent="Cards" unique_id=938545672 instance=ExtResource("card_hedgehog")]
+position = Vector2(585, 573)
 
 [node name="Coin" type="Area2D" parent="." unique_id=105208153]
 position = Vector2(802, 289)

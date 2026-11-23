@@ -4,7 +4,17 @@ extends Control
 @export var cardSpacing := 120
 
 var cards : Array[Card]
-var cardScene : PackedScene = preload("res://scenes/ui/card.tscn")
+# The card scene for each animal (they're in scenes/cards/ui/)
+var cardScenes = {
+	Globals.animal_type.FROG: preload("res://scenes/cards/ui/frog_ui_card.tscn"),
+	Globals.animal_type.CAT: preload("res://scenes/cards/ui/cat_ui_card.tscn"),
+	Globals.animal_type.HEDGEHOG: preload("res://scenes/cards/ui/hedgehog_ui_card.tscn"),
+	Globals.animal_type.BUNNY: preload("res://scenes/cards/ui/bunny_ui_card.tscn"),
+	Globals.animal_type.SNAIL: preload("res://scenes/cards/ui/snail_ui_card.tscn"),
+	Globals.animal_type.MOUSE: preload("res://scenes/cards/ui/mouse_ui_card.tscn"),
+	Globals.animal_type.AXOLOTL: preload("res://scenes/cards/ui/axolotl_ui_card.tscn"),
+	Globals.animal_type.BAT: preload("res://scenes/cards/ui/bat_ui_card.tscn"),
+}
 
 func adjustCardPositions():
 	for i in cards.size():
@@ -18,7 +28,7 @@ func addCard(type : Globals.animal_type) -> void:
 			return
 	
 	# Create a new card
-	var instance := cardScene.instantiate() as Card
+	var instance := cardScenes[type].instantiate() as Card
 	var x := cardSpacing * cards.size()
 	instance.initialize(type, x)
 	cards.push_back(instance)

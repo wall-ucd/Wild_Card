@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://g0rkqhraxle0"]
 
+[ext_resource type="Script" path="res://scripts/animals/animal_animator.gd" id="0_animator"]
 [ext_resource type="Texture2D" uid="uid://c0ft38n7tk8gu" path="res://assets/animals/rodent/sprite_sheets/mouse.png" id="1_sheet"]
-[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_cr3yb"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
@@ -97,6 +97,8 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 monitorable = false
+script = ExtResource("0_animator")
+walkSpeed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441874250]
 position = Vector2(0, -16)
@@ -119,7 +121,3 @@ tree_root = SubResource("mouse_state_machine")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/moving = false
-
-[node name="MOUSE" parent="." unique_id=1441178161 instance=ExtResource("2_cr3yb")]
-visible = false
-position = Vector2(0, -13.999999)

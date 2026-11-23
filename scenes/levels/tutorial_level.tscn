@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://daidn033gnd2c" path="res://scenes/hurt_spikes.tscn" id="6_jcy27"]
 [ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="7_xl0d0"]
 [ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="8_coin"]
-[ext_resource type="Texture2D" uid="uid://bbkw88ud2f06a" path="res://assets/environments/seasonal/grassland/background/complete_static_bg_288x208.png" id="9_bg"]
-[ext_resource type="PackedScene" uid="uid://bctte1x0mr77j" path="res://scenes/animals/frog.tscn" id="12_frog"]
-[ext_resource type="PackedScene" uid="uid://cegu3atmbiooh" path="res://scenes/animals/bunny.tscn" id="13_bunny"]
 [ext_resource type="PackedScene" path="res://scenes/danger_label.tscn" id="14_danger"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/frog_level_card.tscn" id="card_frog"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/bunny_level_card.tscn" id="card_bunny"]
+[ext_resource type="Script" path="res://scripts/level/level_background.gd" id="98_levelbg"]
 
 [sub_resource type="CircleShape2D" id="CoinShape"]
 radius = 18.0
@@ -19,28 +19,22 @@ texture_filter = 1
 [node name="Background" type="CanvasLayer" parent="." unique_id=2021440026]
 layer = -10
 
-[node name="BackgroundImage" type="TextureRect" parent="Background" unique_id=1455958734]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("9_bg")
-expand_mode = 1
+[node name="Parallax" type="Node2D" parent="Background" unique_id=1455958734]
+script = ExtResource("98_levelbg")
+scenery = "res://assets/environments/seasonal/grassland/grassland_scenery.tscn"
 
 [node name="Platforms" type="TileMapLayer" parent="." unique_id=691371590]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAaAAkAAAAEAAEAAAAaAAoAAAAEAAIAAAAaAAsAAAAEAAYAAAAbAAkAAAAEAAEAAAAbAAoAAAAEAAIAAAAbAAsAAAAEAAYAAAAcAAkAAAAEAAEAAAAcAAoAAAAEAAIAAAAcAAsAAAAEAAYAAAAdAAkAAAAEAAEAAAAdAAoAAAAEAAIAAAAdAAsAAAAEAAYAAAAeAAkAAAAEAAEAAAAeAAoAAAAEAAIAAAAeAAsAAAAEAAYAAAAfAAkAAAAEAAEAAAAfAAoAAAAEAAIAAAAfAAsAAAAEAAYAAAAgAAkAAAAEAAEAAAAgAAoAAAAEAAIAAAAgAAsAAAAEAAYAAAAhAAkAAAAEAAEAAAAhAAoAAAAEAAIAAAAhAAsAAAAEAAYAAAAiAAkAAAAFAAEAAAAiAAoAAAAFAAIAAAAiAAsAAAAFAAYAAAABABAAAAAEAAEAAAABABEAAAAEAAIAAAABABIAAAAEAAYAAAACABAAAAAEAAEAAAACABEAAAAEAAIAAAACABIAAAAEAAYAAAADABAAAAAEAAEAAAADABEAAAAEAAIAAAADABIAAAAEAAYAAAAEABAAAAAEAAEAAAAEABEAAAAEAAIAAAAEABIAAAAEAAYAAAAFABAAAAAEAAEAAAAFABEAAAAEAAIAAAAFABIAAAAEAAYAAAAGABAAAAAEAAEAAAAGABEAAAAEAAIAAAAGABIAAAAEAAYAAAAHABAAAAAEAAEAAAAHABEAAAAEAAIAAAAHABIAAAAEAAYAAAAIABAAAAAEAAEAAAAIABEAAAAEAAMAAAAIABIAAAAEAAYAAAAJABAAAAACAAMAAAAJABEAAAAEAAMAAAAJABIAAAAEAAYAAAAKABAAAAACAAMAAAAKABEAAAAEAAMAAAAKABIAAAAEAAYAAAALABAAAAADAAMAAAALABEAAAAEAAIAAAALABIAAAAEAAYAAAAMAAsAAAAEAAEAAAAMAAwAAAAEAAMAAAAMAA0AAAAEAAIAAAAMAA4AAAAEAAIAAAAMAA8AAAAEAAIAAAAMABAAAAAEAAIAAAAMABEAAAAEAAIAAAAMABIAAAAEAAYAAAANAAsAAAAEAAEAAAANAAwAAAAEAAIAAAANAA0AAAAEAAMAAAANAA4AAAAEAAQAAAANAA8AAAAEAAQAAAANABAAAAAEAAMAAAANABEAAAAEAAQAAAANABIAAAAEAAYAAAAOAAsAAAAEAAEAAAAOAAwAAAAEAAIAAAAOAA0AAAAEAAMAAAAOAA4AAAAEAAQAAAAOAA8AAAAEAAQAAAAOABAAAAAEAAMAAAAOABEAAAAEAAQAAAAOABIAAAAEAAYAAAAPAAsAAAAEAAEAAAAPAAwAAAAEAAIAAAAPAA0AAAAEAAMAAAAPAA4AAAAEAAQAAAAPAA8AAAAEAAMAAAAPABAAAAAEAAQAAAAPABEAAAAEAAMAAAAPABIAAAAEAAYAAAAQAAsAAAAEAAEAAAAQAAwAAAAEAAIAAAAQAA0AAAAEAAMAAAAQAA4AAAAEAAQAAAAQAA8AAAAEAAMAAAAQABAAAAAEAAMAAAAQABEAAAAEAAQAAAAQABIAAAAEAAYAAAARAAsAAAAEAAEAAAARAAwAAAAEAAIAAAARAA0AAAAEAAMAAAARAA4AAAAEAAMAAAARAA8AAAAEAAMAAAARABAAAAAEAAQAAAARABEAAAAEAAMAAAARABIAAAAEAAYAAAASAAsAAAAFAAEAAAASAAwAAAAFAAIAAAASAA0AAAAFAAIAAAASAA4AAAAFAAIAAAASAA8AAAAFAAIAAAASABAAAAAFAAIAAAASABEAAAAFAAIAAAASABIAAAAHAAQAAAAAABAAAAADAAEAAAAAABEAAAADAAIAAAAAABIAAAADAAYAAAALAAsAAAADAAEAAAALAAwAAAADAAIAAAALAA0AAAADAAIAAAALAA4AAAADAAIAAAALAA8AAAADAAIAAAAYAAkAAAADAAEAAAAYAAoAAAADAAIAAAAYAAsAAAADAAYAAAAZAAkAAAAEAAEAAAAZAAoAAAAEAAIAAAAZAAsAAAAEAAYAAAAkAAYAAAADAAUAAAAkAAcAAAADAAYAAAAlAAYAAAAEAAUAAAAlAAcAAAAEAAYAAAAkAAUAAAADAAEAAAAlAAUAAAAEAAEAAAAmAAUAAAAFAAEAAAAmAAYAAAAFAAUAAAAmAAcAAAAFAAYAAAA=")
 tile_set = ExtResource("2_tiles")
 
-[node name="Animals" type="Node2D" parent="." unique_id=710037834]
+[node name="Cards" type="Node2D" parent="." unique_id=710037834]
 
-[node name="Frog" parent="Animals" unique_id=452710599 instance=ExtResource("12_frog")]
-position = Vector2(240, 512)
+[node name="FrogCard" parent="Cards" unique_id=452710599 instance=ExtResource("card_frog")]
+position = Vector2(240, 475)
 
-[node name="Bunny" parent="Animals" unique_id=64352804 instance=ExtResource("13_bunny")]
-position = Vector2(513, 348)
+[node name="BunnyCard" parent="Cards" unique_id=64352804 instance=ExtResource("card_bunny")]
+position = Vector2(513, 311)
 
 [node name="Coin" type="Area2D" parent="." unique_id=186003544]
 position = Vector2(1217, 128)

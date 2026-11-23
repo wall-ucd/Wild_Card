@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0whd6gf2e8x5"]
 
+[ext_resource type="Script" path="res://scripts/animals/animal_animator.gd" id="0_animator"]
 [ext_resource type="Texture2D" uid="uid://h6ti2x134a6c" path="res://assets/animals/axolotl/sprite_sheets/tiny_axolotl_spritesheet_albino.png" id="1_sheet"]
-[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="2_eo8he"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
@@ -274,6 +274,10 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 monitorable = false
+script = ExtResource("0_animator")
+walkAnim = "swim_e"
+walkLeftAnim = "swim_w"
+walkSpeed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441874250]
 position = Vector2(0, -16)
@@ -297,7 +301,3 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/moving = false
 parameters/swim/blend_position = Vector2(1, 0)
-
-[node name="AXOLOTL" parent="." unique_id=1441178161 instance=ExtResource("2_eo8he")]
-visible = false
-position = Vector2(0, -13.999999)
