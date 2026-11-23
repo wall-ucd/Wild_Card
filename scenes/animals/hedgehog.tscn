@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c4hftaxcnddfp"]
 
+[ext_resource type="Script" path="res://scripts/animals/animal_animator.gd" id="0_animator"]
 [ext_resource type="Texture2D" uid="uid://cc7a51nnsm4nn" path="res://assets/animals/hedgehog/sprite_sheets/hedgehog.png" id="1_sheet"]
 [ext_resource type="Texture2D" path="res://assets/animals/hedgehog/sprite_sheets/hedgehog_dash.png" id="2_dash"]
-[ext_resource type="PackedScene" uid="uid://ht2sw3bwf4wa" path="res://scenes/card_pickup.tscn" id="3_atghj"]
 
 [sub_resource type="CircleShape2D" id="TouchShape"]
 radius = 22.0
@@ -181,6 +181,9 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 monitorable = false
+script = ExtResource("0_animator")
+walkSpeed = 90.0
+abilityAnim = "dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441874250]
 position = Vector2(0, -16)
@@ -204,7 +207,3 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/idle = false
 parameters/conditions/moving = false
 parameters/conditions/dashing = false
-
-[node name="HEDGEHOG" parent="." unique_id=1441178161 instance=ExtResource("3_atghj")]
-visible = false
-position = Vector2(0, -13.999999)

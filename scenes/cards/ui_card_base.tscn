@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://brpgbm4qopyml"]
+
+[ext_resource type="Script" uid="uid://n3ft620hmi0m" path="res://scenes/ui/card.gd" id="1_2rkeb"]
+[ext_resource type="Texture2D" uid="uid://bxh2ebs3gjvkf" path="res://assets/ui/cards/glow_gradient_texture.tres" id="3_mli0n"]
+[ext_resource type="Texture2D" uid="uid://ftmgq3cnblvl" path="res://assets/ui/cards/card_sprite_sheet.png" id="4_sheet"]
+[ext_resource type="FontFile" path="res://assets/fonts/planes_valmore.ttf" id="5_font"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulu11"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgkcd"]
+texture = ExtResource("3_mli0n")
+
+[node name="UiCard" type="Control" unique_id=1197229841]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+offset_transform_scale = Vector2(2, 2)
+script = ExtResource("1_2rkeb")
+
+[node name="Front" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Base" type="Sprite2D" parent="Front"]
+position = Vector2(-34, -109)
+texture = ExtResource("4_sheet")
+centered = false
+region_enabled = true
+region_rect = Rect2(166, 33, 68, 109)
+
+[node name="Background" type="Sprite2D" parent="Front"]
+modulate = Color(0.75, 0.75, 0.75, 1)
+position = Vector2(-29, -104)
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 58, 99)
+
+[node name="Animal" type="Sprite2D" parent="Front"]
+scale = Vector2(2, 2)
+
+[node name="IdleAnimation" type="AnimationPlayer" parent="Front"]
+autoplay = &"idle"
+
+[node name="CountBadge" type="Sprite2D" parent="Front"]
+position = Vector2(-10, -26)
+texture = ExtResource("4_sheet")
+centered = false
+region_enabled = true
+region_rect = Rect2(358, 678, 20, 20)
+
+[node name="CountLabel" type="Label" parent="Front/CountBadge"]
+offset_top = -1.0
+offset_right = 20.0
+offset_bottom = 19.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.917647, 0.780392, 0.443137, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 8
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=668989925]
+layout_mode = 0
+offset_left = -34.0
+offset_top = -109.0
+offset_right = 34.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ulu11")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cgkcd")

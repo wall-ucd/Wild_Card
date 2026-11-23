@@ -1,0 +1,163 @@
+Animations
+------------------------------------------------
+Every animation that's set up and how to play it.
+"animal" below means an animal scene you've added, for example:
+
+	var animal = preload("res://scenes/animals/frog.tscn").instantiate()
+	animal.position = Vector2(0, 34)   # the animal's position is its feet. (0, 34) = the player's feet
+	player.add_child(animal)
+
+------------------------------------------------
+How the animals work (same for every animal)
+------------------------------------------------
+- animal.updateAnimation(velocity, onFloor, delta)
+	Call this EVERY frame (in _physics_process) with how the animal is moving, for example
+	animal.updateAnimation(player.velocity, player.is_on_floor(), delta)
+	It picks idle / walk / jump / land by itself:
+		- not moving and on the floor          -> idle
+		- moving sideways on the floor         -> walk (plays faster the faster you move, up to 3x)
+		- leaves the floor going up            -> jump: a quick hop, then holds one air pose until it lands
+		- leaves the floor going down (ledge)  -> holds the air pose (no hop)
+		- gets launched up again mid air       -> hops again (for double jumps)
+		- touches the floor again              -> land, then back to idle / walk
+	Keep calling it every frame even during a jump or ability, it's what moves those frames along.
+- animal.faceLeft(true / false)
+	Turns the animal around. Call it every frame too, for example
+	animal.faceLeft(player.facing == Character.Facing.LEFT)
+- animal.playAbility()
+	Plays the animal's ability animation once (only cat and hedgehog have one, see below).
+	Call it when the ability is used. Keep calling updateAnimation() every frame and it plays
+	the ability through, then goes back to idle / walk by itself.
+- animal.isPlayingAbility()
+	true while the ability animation is still playing.
+
+Each animal's frames / speeds are in the Inspector on its scene (scenes/animals/), under the
+root node: Jump (hopFrames, airFrame, landFrames) and Ability (abilityFrames or abilityAnim).
+Animals with no jump frames just keep playing idle / walk while in the air.
+
+------------------------------------------------
+Animals
+------------------------------------------------
+
+Frog (scenes/animals/frog.tscn)
+-------
+- idle:    updateAnimation() while standing still ("idle" animation, frames 32-34)
+- walk:    updateAnimation() while moving ("walk" animation, frames 43-47)
+- jump:    updateAnimation() when it leaves the ground going up (hop = frame 42, air pose = frame 41)
+- land:    updateAnimation() when it touches the ground (frames 43, 44)
+- ability: none (its jump is the jump animation above)
+
+Cat (scenes/animals/cat.tscn)
+-------
+- idle:    updateAnimation() while standing still ("idle" animation, frame 10)
+- walk:    updateAnimation() while moving ("walk" animation, frames 40-43)
+- jump:    no jump frames (stays on idle / walk in the air)
+- ability: playAbility() -> crouch and pounce (frames 80, 81, 82, 83)
+
+Hedgehog (scenes/animals/hedgehog.tscn)
+-------
+- idle:    updateAnimation() while standing still ("idle" animation)
+- walk:    updateAnimation() while moving ("walk" animation)
+- jump:    no jump frames
+- ability: playAbility() -> rolls into a ball ("dash" animation, uses hedgehog_dash.png)
+
+Bunny (scenes/animals/bunny.tscn)
+-------
+- idle:    updateAnimation() while standing still ("idle" animation, sniffing, frames 209-217)
+- walk:    updateAnimation() while moving ("walk" animation, hopping, frames 44-49)
+- jump:    updateAnimation() when it leaves the ground going up (hop = frames 44, 45, air pose = frame 46)
+- double jump: happens by itself in updateAnimation() when it gets launched up mid air (hops again)
+- land:    updateAnimation() when it touches the ground (frames 48, 49)
+- ability: none (its double jump is the jump animation above)
+
+Snail (scenes/animals/snail.tscn)
+-------
+- idle:    updateAnimation() while standing still ("idle" animation)
+- walk:    updateAnimation() while moving ("walk" animation)
+- jump:    no jump frames
+- ability: none
+
+Mouse (scenes/animals/mouse.tscn)
+-------
+- idle:    updateAnimation() while standing still ("idle" animation)
+- walk:    updateAnimation() while moving ("walk" animation)
+- jump:    no jump frames
+- ability: none
+
+Axolotl (scenes/animals/axolotl.tscn)
+-------
+- idle:    updateAnimation() while standing still ("idle" animation)
+- walk:    updateAnimation() while moving. Uses "swim_e" going right and "swim_w" going left
+           (picked from faceLeft(), so call faceLeft() every frame)
+- jump:    no jump frames
+- ability: none
+
+Bat (scenes/animals/bat.tscn)
+-------
+- idle / walk: updateAnimation() -> always the "flying" animation
+- jump:    no jump frames (always flying)
+- ability: none
+- note:    the bat's sprite faces left, faceLeft() already handles that
+
+------------------------------------------------
+Player (scenes/player.tscn)
+------------------------------------------------
+- idle / walk / jump / death: already played by the AnimationTree using the conditions that
+  player.gd already sets (nothing new to call)
+- jump: now a quick hop (frames 25-28) and then holds frame 28 until it lands
+- land: NEW, plays by itself when the jump ends and it touches the floor (frames 30, 31)
+- hide the player when it turns into an animal:   player.sprite.hide()   /   player.sprite.show()
+
+------------------------------------------------
+Transformation smoke (scenes/fx/transformation_smoke.tscn)
+------------------------------------------------
+- show():  plays the smoke puff, then it hides itself again (can be shown again any time)
+- signal "covered":  the first frame is a solid cloud. Swap the player and the animal here
+- signal "finished": the smoke is gone
+- deleteWhenDone (Inspector): delete it when done instead of hiding it (for one-off puffs)
+- Two ways to use it:
+	1. Add one to the player (hidden) and call show(). The smoke moves with the player.
+	2. Instance one into the level where the player is. It plays straight away and stays there
+	   while the player moves away (looks good when you dash out of it). Set deleteWhenDone = true
+	   and connect "covered" BEFORE add_child.
+- Example (turning into a frog):
+	smoke.covered.connect(func():
+		player.sprite.hide()
+		player.add_child(frog))
+	smoke.show()
+
+------------------------------------------------
+Speed aura (scenes/fx/speed_aura.tscn)
+------------------------------------------------
+- Already in player.tscn as "SpeedAura" (hidden, at the player's feet)
+- $SpeedAura.show():     plays the start animation, then loops (while the speed buff is on)
+- $SpeedAura.playEnd():  plays the end animation, then hides itself (when the buff runs out)
+- $SpeedAura.hide():     hides it straight away
+- It's drawn in front of the player and any animal
+
+------------------------------------------------
+Cards
+------------------------------------------------
+Level cards (scenes/cards/level/frog_level_card.tscn etc.)
+- Drag the one you want into a level (under "Cards"). Each one already knows its animal.
+- Floating, spinning (every 4 seconds) and the shadow play by themselves.
+- When picked up the card floats up and fades out by itself (playPickupAnimation() in card_pickup.gd).
+- Size = the scale of the root node in scenes/cards/level_card_base.tscn (0.5 right now).
+
+UI cards (scenes/cards/ui/frog_ui_card.tscn etc.)
+- CardDisplay.addCard(animal) picks the right one by itself.
+- The animal's idle loop plays by itself ("IdleAnimation" node in each card).
+- The number on the card is updated by card.gd (updateText()).
+
+Changing the cards
+- Change one animal's card: open its scene and change Background / Animal / IdleAnimation.
+- Change every card (card frame, number box, float / spin): change level_card_base.tscn or
+  ui_card_base.tscn. All the animal cards copy from these.
+
+------------------------------------------------
+Level backgrounds
+------------------------------------------------
+- The "Parallax" node inside each level's "Background" (script: scripts/level/level_background.gd)
+- Pick the scenery in the Inspector (grassland, autumn forest, winter world, tropics). It copies
+  the layers from that scenery's *_scenery.tscn, scrolls them with the camera and moves the clouds.
+- Nothing to call.
