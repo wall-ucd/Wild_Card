@@ -67,15 +67,16 @@ func use_ability(animal : Globals.animal_type):
 	
 	
 	if(animal == Globals.animal_type.BUNNY):
-		ability2.execute(self)
-	
+		ability1.execute(self)
 	if(animal == Globals.animal_type.HEDGEHOG):
+		ability2.execute(self)
+		
+		
+	if(animal == Globals.animal_type.CAT):
 		ability4.execute(self)
 	if(animal == Globals.animal_type.FROG):
 		ability5.execute(self)
-	if(animal == Globals.animal_type.CAT):
-		ability6.execute(self)
-
+	
 	
 	if(animal == Globals.animal_type.SNAIL):
 		ability0.execute(self)
