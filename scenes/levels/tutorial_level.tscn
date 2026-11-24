@@ -31,10 +31,12 @@ tile_set = ExtResource("2_tiles")
 [node name="Cards" type="Node2D" parent="." unique_id=710037834]
 
 [node name="FrogCard" parent="Cards" unique_id=452710599 instance=ExtResource("card_frog")]
-position = Vector2(240, 475)
+position = Vector2(250.005, 460.57)
+scale = Vector2(0.75, 0.75)
 
 [node name="BunnyCard" parent="Cards" unique_id=64352804 instance=ExtResource("card_bunny")]
-position = Vector2(513, 311)
+position = Vector2(514.335, 300.345)
+scale = Vector2(0.75, 0.75)
 
 [node name="Coin" type="Area2D" parent="." unique_id=186003544]
 position = Vector2(1567.71, 261.05)
