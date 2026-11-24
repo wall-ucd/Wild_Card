@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://65i5xqv8jq0m" path="res://scripts/level/level_background.gd" id="98_levelbg"]
 [ext_resource type="PackedScene" path="res://scenes/cards/level/bunny_level_card.tscn" id="card_bunny"]
 [ext_resource type="PackedScene" path="res://scenes/cards/level/frog_level_card.tscn" id="card_frog"]
+[ext_resource type="PackedScene" path="res://scenes/ability_hint.tscn" id="hint"]
 
 [sub_resource type="CircleShape2D" id="CoinShape"]
 radius = 18.0
@@ -72,3 +73,20 @@ theme_override_font_sizes/font_size = 28
 
 [node name="level_killzone" parent="." unique_id=1852425643 instance=ExtResource("7_xl0d0")]
 position = Vector2(582, 935)
+
+[node name="Hints" type="Node2D" parent="."]
+z_index = 1
+
+[node name="FrogHint" parent="Hints" instance=ExtResource("hint")]
+offset_left = -54.0
+offset_top = 372.0
+offset_right = 506.0
+offset_bottom = 420.0
+text = "Jump higher with Frog!"
+
+[node name="BunnyHint" parent="Hints" instance=ExtResource("hint")]
+offset_left = 249.0
+offset_top = 213.0
+offset_right = 809.0
+offset_bottom = 261.0
+text = "Jump again in midair with Rabbit!"

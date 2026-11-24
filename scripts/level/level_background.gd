@@ -21,9 +21,19 @@ var layers = [] # each one is {"sprite", "parallax", "speed", "drift"}
 var pixelScale := 1
 
 
+func _enter_tree() -> void:
+	get_viewport().size_changed.connect(resizeLayers)
+	resizeLayers()
+
+
 func _ready() -> void:
 	makeLayers()
-	get_viewport().size_changed.connect(resizeLayers)
+
+
+func _exit_tree() -> void:
+	var viewport := get_viewport()
+	if viewport != null and viewport.size_changed.is_connected(resizeLayers):
+		viewport.size_changed.disconnect(resizeLayers)
 
 
 func makeLayers() -> void:
@@ -65,9 +75,10 @@ func makeLayers() -> void:
 
 
 func resizeLayers() -> void:
-	if layers.size() == 0:
+	var viewport := get_viewport()
+	if viewport == null or layers.is_empty():
 		return
-	var screenSize = get_viewport_rect().size
+	var screenSize = viewport.get_visible_rect().size
 	var pictureSize = layers[0].sprite.texture.get_size()
 
 	# smallest whole number scale that fills the screen's height
@@ -86,12 +97,15 @@ func _process(delta: float) -> void:
 
 
 func scrollLayers(delta: float) -> void:
-	var screenSize = get_viewport_rect().size
+	var viewport := get_viewport()
+	if viewport == null:
+		return
+	var screenSize = viewport.get_visible_rect().size
 
 	# how far the camera has moved (in screen pixels)
 	var cameraX = 0.0
 	if not Engine.is_editor_hint():
-		var camera = get_viewport().get_camera_2d()
+		var camera = viewport.get_camera_2d()
 		if camera:
 			cameraX = camera.get_screen_center_position().x * camera.zoom.x
 

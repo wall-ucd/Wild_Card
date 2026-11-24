@@ -6,6 +6,7 @@ signal card_pickup(card_type)
 func _on_child_entered_tree(node: Node) -> void:
 	emit_signal("card_pickup", Globals.animal_type[node.name])
 	remove_child(node)
+	node.queue_free()
 
 func _ready():
 	pass
