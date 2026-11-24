@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dvw3o4luy6mca"]
 
-[ext_resource type="PackedScene" path="res://scenes/cards/ui_card_base.tscn" id="1_base"]
-[ext_resource type="Texture2D" path="res://assets/environments/swamp/background/background.png" id="2_background"]
-[ext_resource type="Texture2D" path="res://assets/animals/frog/sprite_sheets/frog_green_spritesheet.png" id="3_animal"]
+[ext_resource type="PackedScene" uid="uid://brpgbm4qopyml" path="res://scenes/cards/ui_card_base.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://cc5omy8etoc3q" path="res://assets/environments/swamp/background/background.png" id="2_background"]
+[ext_resource type="Texture2D" uid="uid://dwevv2perxbmk" path="res://assets/animals/frog/sprite_sheets/frog_green_spritesheet.png" id="3_animal"]
 
 [sub_resource type="Animation" id="Animation_idle"]
 loop_mode = 1
@@ -24,18 +24,20 @@ _data = {
 &"idle": SubResource("Animation_idle")
 }
 
-[node name="FrogUiCard" instance=ExtResource("1_base")]
+[node name="FrogUiCard" unique_id=133753439 instance=ExtResource("1_base")]
 
-[node name="Background" parent="Front"]
+[node name="Background" parent="Front" parent_id_path=PackedInt32Array(217167467) index="1" unique_id=425375338]
 texture = ExtResource("2_background")
 region_rect = Rect2(192, 224, 58, 99)
 
-[node name="Animal" parent="Front"]
+[node name="Animal" parent="Front" parent_id_path=PackedInt32Array(217167467) index="2" unique_id=1555254103]
 position = Vector2(0, -58)
 texture = ExtResource("3_animal")
 hframes = 16
 vframes = 16
-frame = 0
 
-[node name="IdleAnimation" parent="Front"]
+[node name="IdleAnimation" parent="Front" parent_id_path=PackedInt32Array(217167467) index="3" unique_id=741743031]
 libraries/ = SubResource("AnimationLibrary_idle")
+
+[node name="CountLabel" parent="Front/CountBadge" parent_id_path=PackedInt32Array(1159099864) index="0" unique_id=1787226372]
+offset_bottom = 23.0

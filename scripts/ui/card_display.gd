@@ -3,6 +3,7 @@ extends Control
 
 @export var cardSpacing := 120
 
+signal useAbility(animal : Globals.animal_type)
 var cards : Array[Card]
 # The card scene for each animal (they're in scenes/cards/ui/)
 var cardScenes = {
@@ -38,13 +39,21 @@ func addCard(type : Globals.animal_type) -> void:
 	instance.removeCard.connect(removeCard)
 	instance.useCard.connect(useCard)
 
+func clearHand() -> void:
+	# Free the cards
+	for c in cards:
+		c.queue_free()
+	
+	# Empty the array
+	cards.clear()
+
 func removeCard(cardInstance : Card):
 	cards.erase(cardInstance)
 	cardInstance.queue_free()
 	adjustCardPositions()
 
 func useCard(animal : Globals.animal_type):
-	pass
+	useAbility.emit(animal)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
