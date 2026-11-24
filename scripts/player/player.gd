@@ -41,6 +41,10 @@ func teleport_to_spawn(spawn_position: Vector2) -> void:
 	_last_teleported_position = spawn_position
 	previous_frame_position = spawn_position
 	velocity = Vector2.ZERO
+	movement_speed = DEFAULT_MOVE_VELOCITY
+	jump_velocity = DEFAULT_JUMP_VELOCITY
+	change_facing(Facing.RIGHT)
+	sprite.flip_h = false
 	_dead = false
 	dashing = false
 	dashCount = DASH_DURATION
@@ -76,6 +80,8 @@ func use_ability(animal : Globals.animal_type):
 		ability4.execute(self)
 	if(animal == Globals.animal_type.FROG):
 		ability5.execute(self)
+	if(animal == Globals.animal_type.BAT):
+		ability3.execute(self)
 	
 	
 	if(animal == Globals.animal_type.SNAIL):

@@ -54,10 +54,27 @@ one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1037025672]
 texture_filter = 1
+position = Vector2(-58, 0)
 scale = Vector2(2.326647, 2.2800012)
 texture = ExtResource("1_ms375")
 region_enabled = true
-region_rect = Rect2(143.11124, 47.777336, 80.888885, 15.0004425)
+region_rect = Rect2(143.11124, 47.777336, 32.789307, 15.0004425)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=921744610]
+texture_filter = 1
+position = Vector2(2, 0)
+scale = Vector2(2.326647, 2.2800012)
+texture = ExtResource("1_ms375")
+region_enabled = true
+region_rect = Rect2(157.00008, 47.777336, 18.900467, 15.0004425)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=478699791]
+texture_filter = 1
+position = Vector2(60, 0)
+scale = Vector2(2.326647, 2.2800012)
+texture = ExtResource("1_ms375")
+region_enabled = true
+region_rect = Rect2(192.74124, 47.777336, 31.25888, 15.0004425)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=693147822]
 libraries/ = SubResource("AnimationLibrary_afg43")

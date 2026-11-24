@@ -1,0 +1,88 @@
+[gd_scene format=4 uid="uid://v68aq258l0pg"]
+
+[ext_resource type="Script" uid="uid://65i5xqv8jq0m" path="res://scripts/level/level_background.gd" id="background"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/bat_level_card.tscn" id="card_Bat"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/bunny_level_card.tscn" id="card_Bunny"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/frog_level_card.tscn" id="card_Frog"]
+[ext_resource type="Script" uid="uid://ciek5k5ncsnt8" path="res://scripts/level/teleport_system.gd" id="coin"]
+[ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="coin_frames"]
+[ext_resource type="PackedScene" path="res://scenes/ability_hint.tscn" id="hint"]
+[ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="killzone"]
+[ext_resource type="TileSet" uid="uid://b4f8py7knd0oh" path="res://assets/environments/seasonal/autumn_forest/autumn_forest_tileset.tres" id="terrain"]
+
+[sub_resource type="CircleShape2D" id="CoinShape"]
+radius = 18.0
+
+[node name="Level4" type="Node2D" unique_id=2057745579]
+texture_filter = 1
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1719968094]
+layer = -10
+
+[node name="Parallax" type="Node2D" parent="Background" unique_id=688395195]
+script = ExtResource("background")
+scenery = "res://assets/environments/seasonal/autumn_forest/autumn_forest_scenery.tscn"
+
+[node name="Platforms" type="TileMapLayer" parent="." unique_id=663770608]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAADACEAAAADAAEAAAADACIAAAADAAIAAAADACMAAAADAAYAAAAEACEAAAAEAAEAAAAEACIAAAAEAAIAAAAEACMAAAAEAAYAAAAFACEAAAAEAAEAAAAFACIAAAAEAAIAAAAFACMAAAAEAAYAAAAGACEAAAAEAAEAAAAGACIAAAAEAAIAAAAGACMAAAAEAAYAAAAHACEAAAAEAAEAAAAHACIAAAAEAAIAAAAHACMAAAAEAAYAAAAIACEAAAAEAAEAAAAIACIAAAAEAAIAAAAIACMAAAAEAAYAAAAJACEAAAAEAAEAAAAJACIAAAAEAAIAAAAJACMAAAAEAAYAAAAKACEAAAAEAAEAAAAKACIAAAAEAAIAAAAKACMAAAAEAAYAAAALACEAAAAEAAEAAAALACIAAAAEAAIAAAALACMAAAAEAAYAAAAMACEAAAAFAAEAAAAMACIAAAAFAAIAAAAMACMAAAAFAAYAAAAOABwAAAADAAEAAAAOAB0AAAADAAIAAAAOAB4AAAADAAYAAAAPABwAAAAEAAEAAAAPAB0AAAAEAAIAAAAPAB4AAAAEAAYAAAAQABwAAAAEAAEAAAAQAB0AAAAEAAIAAAAQAB4AAAAEAAYAAAARABwAAAAEAAEAAAARAB0AAAAEAAIAAAARAB4AAAAEAAYAAAASABwAAAAEAAEAAAASAB0AAAAEAAIAAAASAB4AAAAEAAYAAAATABwAAAAFAAEAAAATAB0AAAAFAAIAAAATAB4AAAAFAAYAAAAUABMAAAAEAAEAAAAUABQAAAAEAAIAAAAUABUAAAAEAAIAAAAUABYAAAAEAAIAAAAUABcAAAAEAAIAAAAUABgAAAAEAAIAAAAUABkAAAAEAAIAAAAUABoAAAAEAAIAAAAUABsAAAAEAAYAAAADABYAAAADAAEAAAADABcAAAADAAYAAAAEABYAAAAEAAEAAAAEABcAAAAEAAYAAAAFABYAAAAEAAEAAAAFABcAAAAEAAYAAAAGABYAAAAEAAEAAAAGABcAAAAEAAYAAAAHABYAAAAEAAEAAAAHABcAAAAEAAYAAAAIABYAAAAEAAEAAAAIABcAAAAEAAYAAAAJABYAAAAEAAEAAAAJABcAAAAEAAYAAAAKABYAAAAEAAEAAAAKABcAAAAEAAYAAAALABYAAAAEAAEAAAALABcAAAAEAAYAAAAMABYAAAAEAAEAAAAMABcAAAAEAAYAAAANABYAAAAFAAEAAAANABcAAAAFAAYAAAAPABAAAAADAAEAAAAPABEAAAADAAYAAAAQABAAAAAEAAEAAAAQABEAAAAEAAYAAAARABAAAAAEAAEAAAARABEAAAAEAAYAAAASABAAAAAEAAEAAAASABEAAAAEAAYAAAATABAAAAAFAAEAAAATABEAAAAFAAYAAAAGAAoAAAADAAEAAAAGAAsAAAADAAYAAAAHAAoAAAAEAAEAAAAHAAsAAAAEAAYAAAAIAAoAAAAEAAEAAAAIAAsAAAAEAAYAAAAJAAoAAAAEAAEAAAAJAAsAAAAEAAYAAAAKAAoAAAAEAAEAAAAKAAsAAAAEAAYAAAALAAoAAAAEAAEAAAALAAsAAAAEAAYAAAAMAAoAAAAFAAEAAAAMAAsAAAAFAAYAAAAGAAQAAAADAAEAAAAGAAUAAAADAAIAAAAGAAYAAAADAAYAAAAHAAQAAAAEAAEAAAAHAAUAAAAEAAIAAAAHAAYAAAAEAAYAAAAIAAQAAAAEAAEAAAAIAAUAAAAEAAIAAAAIAAYAAAAEAAYAAAAJAAQAAAAEAAEAAAAJAAUAAAAEAAIAAAAJAAYAAAAEAAYAAAAKAAQAAAAEAAEAAAAKAAUAAAAEAAIAAAAKAAYAAAAEAAYAAAALAAQAAAAEAAEAAAALAAUAAAAEAAIAAAALAAYAAAAEAAYAAAAMAAQAAAAEAAEAAAAMAAUAAAAEAAIAAAAMAAYAAAAEAAYAAAANAAQAAAAEAAEAAAANAAUAAAAEAAIAAAANAAYAAAAEAAYAAAAOAAQAAAAEAAEAAAAOAAUAAAAEAAIAAAAOAAYAAAAEAAYAAAAPAAQAAAAEAAEAAAAPAAUAAAAEAAIAAAAPAAYAAAAEAAYAAAAQAAQAAAAEAAEAAAAQAAUAAAAEAAIAAAAQAAYAAAAEAAYAAAARAAQAAAAEAAEAAAARAAUAAAAEAAIAAAARAAYAAAAEAAYAAAASAAQAAAAFAAEAAAASAAUAAAAFAAIAAAASAAYAAAAFAAYAAAApABEAAAAEAAEAAAApABIAAAAEAAYAAAAqABEAAAAEAAEAAAAqABIAAAAEAAYAAAArABEAAAAFAAEAAAArABIAAAAFAAYAAAAmABEAAAADAAEAAAAmABIAAAADAAYAAAAnABEAAAAEAAEAAAAnABIAAAAEAAYAAAAoABEAAAAEAAEAAAAoABIAAAAEAAYAAAA=")
+tile_set = ExtResource("terrain")
+
+[node name="Shuttles" type="Node2D" parent="." unique_id=1696239528]
+
+[node name="Cards" type="Node2D" parent="." unique_id=740539337]
+
+[node name="FirstFrog" parent="Cards" unique_id=867319330 instance=ExtResource("card_Frog")]
+position = Vector2(304, 1003)
+scale = Vector2(0.75, 0.75)
+
+[node name="RabbitCard" parent="Cards" unique_id=14421007 instance=ExtResource("card_Bunny")]
+position = Vector2(600, 843)
+scale = Vector2(0.75, 0.75)
+
+[node name="SecondFrog" parent="Cards" unique_id=1171170704 instance=ExtResource("card_Frog")]
+position = Vector2(200, 651)
+scale = Vector2(0.75, 0.75)
+
+[node name="ThirdFrog" parent="Cards" unique_id=412983521 instance=ExtResource("card_Frog")]
+position = Vector2(560, 459)
+scale = Vector2(0.75, 0.75)
+
+[node name="BatCard" parent="Cards" unique_id=396006553 instance=ExtResource("card_Bat")]
+position = Vector2(470, 75)
+scale = Vector2(0.75, 0.75)
+
+[node name="Hints" type="Node2D" parent="." unique_id=217765458]
+z_index = 1
+
+[node name="BatHint" parent="Hints" unique_id=7803934 instance=ExtResource("hint")]
+offset_left = 350.0
+offset_top = 56.0
+offset_right = 910.0
+offset_bottom = 104.0
+text = "Glide with Bat!"
+
+[node name="Coin" type="Area2D" parent="." unique_id=2106073863]
+position = Vector2(1369, 506)
+collision_layer = 0
+script = ExtResource("coin")
+next_level = "res://scenes/levels/level5.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=296296756]
+shape = SubResource("CoinShape")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Coin" unique_id=894926535]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("coin_frames")
+animation = &"coin"
+autoplay = "coin"
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=934544643]
+position = Vector2(152, 1020)
+
+[node name="CameraPosition" type="Marker2D" parent="SpawnPoint" unique_id=73951685]
+position = Vector2(872, -420)
+
+[node name="LevelKillzone" parent="." unique_id=558583196 instance=ExtResource("killzone")]
+position = Vector2(1024, 1216)
+scale = Vector2(80, 2)

@@ -1,0 +1,74 @@
+[gd_scene format=4 uid="uid://hhb8my8unkkd"]
+
+[ext_resource type="Script" uid="uid://65i5xqv8jq0m" path="res://scripts/level/level_background.gd" id="background"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/bunny_level_card.tscn" id="card_Bunny"]
+[ext_resource type="PackedScene" path="res://scenes/cards/level/frog_level_card.tscn" id="card_Frog"]
+[ext_resource type="Script" uid="uid://ciek5k5ncsnt8" path="res://scripts/level/teleport_system.gd" id="coin"]
+[ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="coin_frames"]
+[ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="killzone"]
+[ext_resource type="PackedScene" uid="uid://11fau8msua5j" path="res://scenes/moving_platform.tscn" id="moving_platform"]
+[ext_resource type="TileSet" uid="uid://bau3ckm2uashw" path="res://assets/environments/seasonal/winter_world/winter_world_tileset.tres" id="terrain"]
+
+[sub_resource type="CircleShape2D" id="CoinShape"]
+radius = 18.0
+
+[node name="Level3" type="Node2D" unique_id=531521499]
+texture_filter = 1
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=238218898]
+layer = -10
+
+[node name="Parallax" type="Node2D" parent="Background" unique_id=1655916471]
+script = ExtResource("background")
+scenery = "res://assets/environments/seasonal/winter_world/winter_world_scenery.tscn"
+
+[node name="Platforms" type="TileMapLayer" parent="." unique_id=1456398597]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAADACAAAAADAAEAAAADACEAAAADAAIAAAADACIAAAADAAYAAAAEACAAAAAEAAEAAAAEACEAAAAEAAIAAAAEACIAAAAEAAYAAAAFACAAAAAEAAEAAAAFACEAAAAEAAIAAAAFACIAAAAEAAYAAAAGACAAAAAEAAEAAAAGACEAAAAEAAIAAAAGACIAAAAEAAYAAAAHACAAAAAEAAEAAAAHACEAAAAEAAIAAAAHACIAAAAEAAYAAAAIACAAAAAEAAEAAAAIACEAAAAEAAIAAAAIACIAAAAEAAYAAAAJACAAAAAEAAEAAAAJACEAAAAEAAIAAAAJACIAAAAEAAYAAAAKACAAAAAFAAEAAAAKACEAAAAFAAIAAAAKACIAAAAFAAYAAAA0AB0AAAAEAAEAAAA0AB4AAAAEAAIAAAA0AB8AAAAEAAYAAAA1AB0AAAAEAAEAAAA1AB4AAAAEAAIAAAA1AB8AAAAEAAYAAAA2AB0AAAAEAAEAAAA2AB4AAAAEAAIAAAA2AB8AAAAEAAYAAAA3AB0AAAAEAAEAAAA3AB4AAAAEAAIAAAA3AB8AAAAEAAYAAAA4AB0AAAAEAAEAAAA4AB4AAAAEAAIAAAA4AB8AAAAEAAYAAAA5AB0AAAAEAAEAAAA5AB4AAAAEAAIAAAA5AB8AAAAEAAYAAAA6AB0AAAAEAAEAAAA6AB4AAAAEAAIAAAA6AB8AAAAEAAYAAAA7AB0AAAAFAAEAAAA7AB4AAAAFAAIAAAA7AB8AAAAFAAYAAAAOAB0AAAADAAEAAAAOAB4AAAADAAIAAAAOAB8AAAADAAYAAAAPAB0AAAAEAAEAAAAPAB4AAAAEAAIAAAAPAB8AAAAEAAYAAAAQAB0AAAAEAAEAAAAQAB4AAAAEAAIAAAAQAB8AAAAEAAYAAAARAB0AAAAEAAEAAAARAB4AAAAEAAIAAAARAB8AAAAEAAYAAAASAB0AAAAEAAEAAAASAB4AAAAEAAIAAAASAB8AAAAEAAYAAAATAB0AAAAFAAEAAAATAB4AAAAFAAIAAAATAB8AAAAFAAYAAAAzAB0AAAADAAEAAAAzAB4AAAADAAIAAAAzAB8AAAADAAYAAAA=")
+tile_set = ExtResource("terrain")
+
+[node name="Shuttles" type="Node2D" parent="." unique_id=1924150888]
+
+[node name="LeftLiftPath" type="Line2D" parent="Shuttles" unique_id=1961579395]
+z_index = -1
+points = PackedVector2Array(952, 840, 1224, 840)
+width = 5.0
+default_color = Color(0.29, 0.21, 0.28, 0.65)
+
+[node name="LeftLift" parent="Shuttles" unique_id=1355655524 instance=ExtResource("moving_platform")]
+position = Vector2(952, 840)
+
+[node name="Cards" type="Node2D" parent="." unique_id=1481935903]
+
+[node name="FrogCard" parent="Cards" unique_id=2019058697 instance=ExtResource("card_Frog")]
+position = Vector2(532, 875)
+scale = Vector2(0.75, 0.75)
+
+[node name="BunnyCard" parent="Cards" unique_id=2076504915 instance=ExtResource("card_Bunny")]
+position = Vector2(945.00006, 760)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coin" type="Area2D" parent="." unique_id=663830768]
+position = Vector2(1753, 845)
+collision_layer = 0
+script = ExtResource("coin")
+next_level = "res://scenes/levels/level4.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=959597776]
+shape = SubResource("CoinShape")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Coin" unique_id=1812961597]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("coin_frames")
+animation = &"coin"
+autoplay = "coin"
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1033118603]
+position = Vector2(152, 988)
+
+[node name="CameraPosition" type="Marker2D" parent="SpawnPoint" unique_id=1363151841]
+position = Vector2(872, -388)
+
+[node name="LevelKillzone" parent="." unique_id=1305535920 instance=ExtResource("killzone")]
+position = Vector2(1024, 1216)
+scale = Vector2(80, 2)
