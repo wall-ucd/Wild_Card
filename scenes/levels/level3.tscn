@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://ciek5k5ncsnt8" path="res://scripts/level/teleport_system.gd" id="coin"]
 [ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="coin_frames"]
 [ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="killzone"]
-[ext_resource type="PackedScene" uid="uid://11fau8msua5j" path="res://scenes/moving_platform.tscn" id="moving_platform"]
+[ext_resource type="PackedScene" uid="uid://11fau8msua5j" path="res://scenes/moving_platform_horizontal.tscn" id="moving_platform"]
 [ext_resource type="TileSet" uid="uid://bau3ckm2uashw" path="res://assets/environments/seasonal/winter_world/winter_world_tileset.tres" id="terrain"]
 
 [sub_resource type="CircleShape2D" id="CoinShape"]

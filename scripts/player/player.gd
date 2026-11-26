@@ -96,6 +96,7 @@ func _physics_process(delta: float):
 		# Teleport back to last teleported position
 		# or where the player started.
 		self.global_position = _last_teleported_position
+		GlobalVariables.playerDieCount += 1
 		emit_signal("died_and_respawned")
 		_dead = false
 		return

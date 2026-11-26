@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://ov71gkp404q4"]
 
 [ext_resource type="TileSet" uid="uid://cvrxrcw0v6oqd" path="res://assets/environments/tutorial/tutorial_tileset.tres" id="2_tiles"]
+[ext_resource type="PackedScene" uid="uid://c4mptot0w2aiq" path="res://scenes/moving_platform_vertical.tscn" id="5_d0g56"]
 [ext_resource type="Script" uid="uid://ciek5k5ncsnt8" path="res://scripts/level/teleport_system.gd" id="6_coin_teleport"]
 [ext_resource type="PackedScene" uid="uid://daidn033gnd2c" path="res://scenes/hurt_spikes.tscn" id="6_jcy27"]
 [ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="7_xl0d0"]
@@ -39,6 +40,9 @@ scale = Vector2(0.75, 0.75)
 position = Vector2(514.335, 300.345)
 scale = Vector2(0.75, 0.75)
 
+[node name="Moving_Platform" parent="Cards" unique_id=2023196116 instance=ExtResource("5_d0g56")]
+position = Vector2(217, 340)
+
 [node name="Coin" type="Area2D" parent="." unique_id=186003544]
 position = Vector2(1567.71, 261.05)
 collision_layer = 0
@@ -74,17 +78,17 @@ theme_override_font_sizes/font_size = 28
 [node name="level_killzone" parent="." unique_id=1852425643 instance=ExtResource("7_xl0d0")]
 position = Vector2(582, 935)
 
-[node name="Hints" type="Node2D" parent="."]
+[node name="Hints" type="Node2D" parent="." unique_id=358629505]
 z_index = 1
 
-[node name="FrogHint" parent="Hints" instance=ExtResource("hint")]
+[node name="FrogHint" parent="Hints" unique_id=1609408747 instance=ExtResource("hint")]
 offset_left = -54.0
 offset_top = 372.0
 offset_right = 506.0
 offset_bottom = 420.0
 text = "Jump higher with Frog!"
 
-[node name="BunnyHint" parent="Hints" instance=ExtResource("hint")]
+[node name="BunnyHint" parent="Hints" unique_id=1592097400 instance=ExtResource("hint")]
 offset_left = 249.0
 offset_top = 213.0
 offset_right = 809.0

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://c4mptot0w2aiq"]
+
+[ext_resource type="Texture2D" uid="uid://caemdqqgvkrjf" path="res://assets/environments/seasonal/grassland/tiles/terrain_16x16.png" id="1_t3bpi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyont"]
+size = Vector2(18.92911, 30.263157)
+
+[sub_resource type="Animation" id="Animation_1tdcd"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("moving_platform_vertical:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mb26n"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("moving_platform_vertical:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -286)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_afg43"]
+_data = {
+&"RESET": SubResource("Animation_1tdcd"),
+&"move": SubResource("Animation_mb26n")
+}
+
+[node name="moving_platform_vertical" type="Node2D" unique_id=1857565623]
+
+[node name="moving_platform_vertical" type="AnimatableBody2D" parent="." unique_id=318139656]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="moving_platform_vertical" unique_id=1479291222]
+position = Vector2(-0.047560677, 4.7056298e-07)
+scale = Vector2(9.880002, 1.167806)
+shape = SubResource("RectangleShape2D_jyont")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="moving_platform_vertical" unique_id=1037025672]
+texture_filter = 1
+position = Vector2(-58, 0)
+scale = Vector2(2.326647, 2.2800012)
+texture = ExtResource("1_t3bpi")
+region_enabled = true
+region_rect = Rect2(143.11124, 47.777336, 32.789307, 15.0004425)
+
+[node name="Sprite2D2" type="Sprite2D" parent="moving_platform_vertical" unique_id=921744610]
+texture_filter = 1
+position = Vector2(2, 0)
+scale = Vector2(2.326647, 2.2800012)
+texture = ExtResource("1_t3bpi")
+region_enabled = true
+region_rect = Rect2(157.00008, 47.777336, 18.900467, 15.0004425)
+
+[node name="Sprite2D3" type="Sprite2D" parent="moving_platform_vertical" unique_id=478699791]
+texture_filter = 1
+position = Vector2(60, 0)
+scale = Vector2(2.326647, 2.2800012)
+texture = ExtResource("1_t3bpi")
+region_enabled = true
+region_rect = Rect2(192.74124, 47.777336, 31.25888, 15.0004425)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moving_platform_vertical" unique_id=693147822]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_afg43")
+autoplay = &"move"
