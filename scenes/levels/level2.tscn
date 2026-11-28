@@ -6,7 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b25o2nwofva0v" path="res://assets/environments/swamp/sprite_frames/coin.tres" id="coin_frames"]
 [ext_resource type="PackedScene" path="res://scenes/ability_hint.tscn" id="hint"]
 [ext_resource type="PackedScene" uid="uid://cgjydcmxfo8f8" path="res://scenes/level_killzone.tscn" id="killzone"]
-[ext_resource type="PackedScene" uid="uid://11fau8msua5j" path="res://scenes/moving_platform.tscn" id="moving_platform"]
+[ext_resource type="PackedScene" uid="uid://11fau8msua5j" path="res://scenes/moving_platform_horizontal.tscn" id="moving_platform"]
 [ext_resource type="TileSet" uid="uid://b5ai8oyx0q43q" path="res://assets/environments/hazards/spikes/spike_tileset.tres" id="spikes"]
 [ext_resource type="TileSet" uid="uid://0wxm88u6kxs4" path="res://assets/environments/seasonal/tropics/tropics_tileset.tres" id="terrain"]
 

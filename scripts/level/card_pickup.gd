@@ -20,14 +20,24 @@ const SHADOW_GAP = 12.0
 
 var used = false
 var floatTimer := 0.0
-
+var pastPlayerDiedCount = 0
 
 func _ready():
 	# start at a random time so cards next to each other don't move together
 	floatTimer = randf() * SPIN_EVERY
-
+	pastPlayerDiedCount = GlobalVariables.playerDieCount
 
 func _process(delta: float) -> void:
+	# Make not used if player respawns.
+	if GlobalVariables.playerDieCount > pastPlayerDiedCount:
+		pastPlayerDiedCount = GlobalVariables.playerDieCount
+		if used:
+			var tween = create_tween().set_parallel(true)
+			tween.tween_property($Card, "position:y", $Card.position.y + 40.0, 0.35).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+			tween.tween_property($Card, "modulate:a", 0.35, 0)
+			tween.tween_property($Card, "modulate:a", 1, 0.35)
+			used = false
+	
 	if used or not is_visible_in_tree():
 		return
 	floatTimer += delta
@@ -73,6 +83,7 @@ func _on_body_entered(body: Node2D) -> void:
 				child.add_child(cardToPickup)
 				$PickupSound.play()
 		playPickupAnimation()
+
 
 
 # card floats up and fades out

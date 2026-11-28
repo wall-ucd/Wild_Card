@@ -43,7 +43,7 @@ _data = {
 &"move": SubResource("Animation_mb26n")
 }
 
-[node name="Moving_Platform" type="RigidBody2D" unique_id=2023196116]
+[node name="Moving_Platform_Horizontal" type="RigidBody2D" unique_id=2023196116]
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479291222]
